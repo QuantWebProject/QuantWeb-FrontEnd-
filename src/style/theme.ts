@@ -1,4 +1,4 @@
-type ColorKey =
+export type ColorKey =
   | "main"
   | "white"
   | "sub1"
@@ -21,6 +21,9 @@ type ColorKey =
 export type LayoutWidth = "large" | "medium" | "small";
 export type BorderRadius = "default";
 
+export type THeadingSize = "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
+export type TBodySize = "B1" | "B2" | "B3" | "B4";
+export type TSnbSchema = "default" | "grey" | "white";
 interface Theme {
   color: {
     [key in ColorKey]: string;
@@ -32,6 +35,19 @@ interface Theme {
   };
   borderRadius: {
     [key in BorderRadius]: string;
+  };
+
+  headingSize: {
+    [key in THeadingSize]: string;
+  };
+  bodySize: {
+    [key in TBodySize]: string;
+  };
+  snbSchema: {
+    [key in TSnbSchema]: {
+      color: string;
+      background: string;
+    };
   };
 }
 
@@ -54,18 +70,47 @@ const theme: Theme = {
     gray8: "#6D6D7D",
     gray9: "#4C4C57",
     gray10: "#1F1F23",
-    dimmed: "#00000066",
+    dimmed: "#00000066"
   },
   layout: {
     width: {
       large: "1020px",
       medium: "760px",
-      small: "360px",
-    },
+      small: "360px"
+    }
   },
   borderRadius: {
-    default: "0.75rem",
+    default: "0.75rem"
   },
+  headingSize: {
+    T1: "32px",
+    T2: "28px",
+    T3: "24px",
+    T4: "22px",
+    T5: "20px",
+    T6: "20px",
+    T7: "20px"
+  },
+  bodySize: {
+    B1: "18px",
+    B2: "18px",
+    B3: "16px",
+    B4: "14px"
+  },
+  snbSchema: {
+    default: {
+      color: "#fff",
+      background: "rgba(255,255,255,0)"
+    },
+    grey: {
+      color: "#fff",
+      background: "rgba(255,255,255,0.10)"
+    },
+    white: {
+      color: "#7467FF",
+      background: "rgba(255,255,255,0.90)"
+    }
+  }
 };
 
 export default theme;
