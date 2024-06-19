@@ -1,5 +1,5 @@
 import Body from "@/components/common/Body";
-import Snb from "@/components/common/Snb";
+import SnbItem from "@/components/common/SnbItem";
 import Title from "@/components/common/Title";
 import styled from "styled-components";
 
@@ -10,15 +10,15 @@ const Test = () => {
         hello
       </Title>
       <Body size="B1"> hi </Body>
-      <Snb schema="default" name="text">
-        hi
-      </Snb>
-      <Snb schema="grey" name="text">
-        hi
-      </Snb>
-      <Snb schema="white" name="text">
-        hi
-      </Snb>
+      <SnbItem schema="default" image="text">
+        TEXT
+      </SnbItem>
+      <SnbItem schema="grey" image="text">
+        TEXT
+      </SnbItem>
+      <SnbItem schema="white" image="text">
+        TEXT
+      </SnbItem>
     </TestStyle>
   );
 };

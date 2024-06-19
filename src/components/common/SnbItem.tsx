@@ -1,28 +1,20 @@
 import styled from "styled-components";
 import Body from "./Body";
 import theme, { TSnbSchema } from "@/style/theme";
+import SnbText from "@/assets/images/SnbText.svg?react";
 interface Props {
   children: string;
   schema: TSnbSchema;
-  name: TUrl;
+  image: TImage;
 }
-type TUrl = "text" | "login";
-type Url = {
-  [key in TUrl]: string;
-};
-const URL: Url = {
-  text: "src/assets/images/SNB.svg",
-  login: "ff.svg"
-};
+type TImage = "text";
 
-const Snb = ({ children, schema, name }: Props) => {
-  const imageUrl = URL[name];
+const Snb = ({ children, schema, image }: Props) => {
   const fontColor = theme.snbSchema[schema].color;
+  const imageColor = theme.snbSchema[schema].color;
   return (
-    <SnbStyle schema={schema} name={name}>
-      <div className="image">
-        <img src={imageUrl} alt={name} />
-      </div>
+    <SnbStyle schema={schema} image={image}>
+      {<SnbText stroke={imageColor} />}
       <Body size="T6" color={fontColor}>
         {children}
       </Body>
@@ -40,10 +32,5 @@ const SnbStyle = styled.div<Omit<Props, "children">>`
   border-radius: 12px;
   background: ${({ theme, schema }) => theme.snbSchema[schema].background};
   color: ${({ theme, schema }) => theme.snbSchema[schema].color};
-  .image {
-    img {
-      color: ${({ theme, schema }) => theme.snbSchema[schema].color};
-    }
-  }
 `;
 export default Snb;
