@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ArrowDownSVG from "@/assets/images/arrowDown.svg?react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import FactorItem from "./FactorItem";
 import ToolTip from "../common/ToolTip";
 
@@ -10,14 +10,24 @@ interface Option {
   info: string;
 }
 interface Props {
+  title: string;
+  titleInfo: string;
   options: Option[];
   open?: boolean; // 드롭다운이 열려있으면 true
   onCheck: (id: number) => void;
   optionsActive: number[];
+  dropdownRef: React.MutableRefObject<HTMLDivElement | null>;
 }
-const FactorDropdown = ({ options, onCheck, optionsActive, open }: Props) => {
+const FactorDropdown = ({
+  title,
+  titleInfo,
+  options,
+  onCheck,
+  optionsActive,
+  open,
+  dropdownRef
+}: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(open || false);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -40,9 +50,9 @@ const FactorDropdown = ({ options, onCheck, optionsActive, open }: Props) => {
           <div className="icon">
             <ArrowDownSVG />
           </div>
-          <div className="title">가치</div>
+          <div className="title">{title}</div>
           <div className="toolTip">
-            <ToolTip info={"가치 팩터입니다."} />
+            <ToolTip info={titleInfo} />
           </div>
         </div>
         <div className="count">{options.length}</div>
@@ -121,7 +131,7 @@ const FactorDropdownStyle = styled.div<{ $open: boolean }>`
   }
 `;
 
-const OptionContainer = styled.div`
+export const OptionContainer = styled.div`
   ul,
   li {
     list-style: none;
