@@ -4,15 +4,16 @@ import theme, { TSnbSchema } from "@/style/theme";
 import SnbText from "@/assets/images/SnbText.svg?react";
 interface Props {
   children: string;
-  schema: TSnbSchema;
+  schema: Extract<TSnbSchema, "hover">;
   image: TImage;
+  prevent: boolean;
 }
 type TImage = "text";
 
-const SnbItem = ({ children, schema, image }: Props) => {
+const SnbItem = ({ children, schema, image, prevent }: Props) => {
   const fontColor = theme.snbSchema[schema].color;
   return (
-    <SnbItemStyle schema={schema} image={image}>
+    <SnbItemStyle schema={schema} image={image} prevent={prevent}>
       <div className="icon"> {<SnbText />}</div>
       <Body size="T6" color={fontColor}>
         {children}
@@ -22,6 +23,10 @@ const SnbItem = ({ children, schema, image }: Props) => {
 };
 
 const SnbItemStyle = styled.div<Omit<Props, "children">>`
+  &:hover{
+    background: ${({ prevent, theme }) => (prevent ? "" : theme.snbSchema["hover"].background)};
+    color: ${({ prevent, theme }) => (prevent ? "" : theme.snbSchema["hover"].color)};
+  }
   display: flex;
   width: 280px;
   height: 64px;

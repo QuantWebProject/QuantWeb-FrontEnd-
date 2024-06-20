@@ -10,13 +10,10 @@ const Test = () => {
         hello
       </Title>
       <Body size="B1"> hi </Body>
-      <SnbItem schema="default" image="text">
+      <SnbItem prevent={false} schema="default" image="text">
         TEXT
       </SnbItem>
-      <SnbItem schema="grey" image="text">
-        TEXT
-      </SnbItem>
-      <SnbItem schema="white" image="text">
+      <SnbItem prevent={true} schema="selected" image="text">
         TEXT
       </SnbItem>
     </TestStyle>

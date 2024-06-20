@@ -23,7 +23,7 @@ export type BorderRadius = "default";
 
 export type THeadingSize = "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
 export type TBodySize = "B1" | "B2" | "B3" | "B4";
-export type TSnbSchema = "default" | "grey" | "white";
+export type TSnbSchema = "default" | "hover" | "selected";
 interface Theme {
   color: {
     [key in ColorKey]: string;
@@ -102,11 +102,11 @@ const theme: Theme = {
       color: "#fff",
       background: "rgba(255,255,255,0)"
     },
-    grey: {
+    hover: {
       color: "#fff",
       background: "rgba(255,255,255,0.10)"
     },
-    white: {
+    selected: {
       color: "#7467FF",
       background: "rgba(255,255,255,0.90)"
     }
