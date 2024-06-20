@@ -21,6 +21,7 @@ type ColorKey =
 export type LayoutWidth = "large" | "medium" | "small";
 export type BorderRadius = "default";
 
+type BoxShadow = "shadow1" | "shadow2" | "shadow3";
 interface Theme {
   color: {
     [key in ColorKey]: string;
@@ -32,6 +33,9 @@ interface Theme {
   };
   borderRadius: {
     [key in BorderRadius]: string;
+  };
+  boxShadow: {
+    [key in BoxShadow]: string;
   };
 }
 
@@ -54,18 +58,23 @@ const theme: Theme = {
     gray8: "#6D6D7D",
     gray9: "#4C4C57",
     gray10: "#1F1F23",
-    dimmed: "#00000066",
+    dimmed: "#00000066"
   },
   layout: {
     width: {
       large: "1020px",
       medium: "760px",
-      small: "360px",
-    },
+      small: "360px"
+    }
   },
   borderRadius: {
-    default: "0.75rem",
+    default: "0.75rem"
   },
+  boxShadow: {
+    shadow1: "1px 2px 16px 0px rgba(0, 0, 0, 0.08)",
+    shadow2: "1px 2px 16px 0px rgba(0, 0, 0, 0.16)",
+    shadow3: "1px 2px 16px 0px rgba(0, 0, 0, 0.30)"
+  }
 };
 
 export default theme;
