@@ -11,10 +11,9 @@ type TImage = "text";
 
 const SnbItem = ({ children, schema, image }: Props) => {
   const fontColor = theme.snbSchema[schema].color;
-  const imageColor = theme.snbSchema[schema].color;
   return (
     <SnbItemStyle schema={schema} image={image}>
-      {<SnbText stroke={imageColor} />}
+      <div className="icon"> {<SnbText />}</div>
       <Body size="T6" color={fontColor}>
         {children}
       </Body>
@@ -32,5 +31,9 @@ const SnbItemStyle = styled.div<Omit<Props, "children">>`
   border-radius: 12px;
   background: ${({ theme, schema }) => theme.snbSchema[schema].background};
   color: ${({ theme, schema }) => theme.snbSchema[schema].color};
+  .icon {
+    svg {
+      color: ${({ theme, schema }) => theme.snbSchema[schema].color};
+    }
 `;
 export default SnbItem;
