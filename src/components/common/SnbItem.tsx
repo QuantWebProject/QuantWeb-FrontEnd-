@@ -9,20 +9,20 @@ interface Props {
 }
 type TImage = "text";
 
-const Snb = ({ children, schema, image }: Props) => {
+const SnbItem = ({ children, schema, image }: Props) => {
   const fontColor = theme.snbSchema[schema].color;
   const imageColor = theme.snbSchema[schema].color;
   return (
-    <SnbStyle schema={schema} image={image}>
+    <SnbItemStyle schema={schema} image={image}>
       {<SnbText stroke={imageColor} />}
       <Body size="T6" color={fontColor}>
         {children}
       </Body>
-    </SnbStyle>
+    </SnbItemStyle>
   );
 };
 
-const SnbStyle = styled.div<Omit<Props, "children">>`
+const SnbItemStyle = styled.div<Omit<Props, "children">>`
   display: flex;
   width: 280px;
   height: 64px;
@@ -33,4 +33,4 @@ const SnbStyle = styled.div<Omit<Props, "children">>`
   background: ${({ theme, schema }) => theme.snbSchema[schema].background};
   color: ${({ theme, schema }) => theme.snbSchema[schema].color};
 `;
-export default Snb;
+export default SnbItem;
