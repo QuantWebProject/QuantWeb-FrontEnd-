@@ -4,7 +4,7 @@ import theme, { TSnbSchema } from "@/style/theme";
 import SnbText from "@/assets/images/SnbText.svg?react";
 interface Props {
   children: string;
-  schema: Extract<TSnbSchema, "hover">;
+  schema: Extract<TSnbSchema, "default" | "selected">;
   image: TImage;
   prevent: boolean;
 }
