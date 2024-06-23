@@ -46,6 +46,8 @@ export type THeadingSize = "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
 export type TBodySize = "B1" | "B2" | "B3" | "B4";
 export type TSnbSchema = "default" | "hover" | "selected";
 
+export type TLoginSchema = "default" | "hover";
+
 interface Theme {
   color: {
     [key in ColorKey]: string;
