@@ -6,6 +6,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./api/queryClient";
 import { Provider } from "react-redux";
 import store from "./store";
+import Test from "./pages/Test";
 
 const routeList = [
   {
@@ -15,6 +16,10 @@ const routeList = [
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/test",
+    element: <Test />
   }
 ];
 

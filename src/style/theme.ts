@@ -1,4 +1,4 @@
-type ColorKey =
+export type ColorKey =
   | "main"
   | "white"
   | "sub1"
@@ -41,6 +41,10 @@ export type TButtonSize =
   | "narrowShort" // 140x68
   | "small"; // 60x60
 
+export type THeadingSize = "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
+export type TBodySize = "B1" | "B2" | "B3" | "B4";
+export type TSnbSchema = "default" | "hover" | "selected";
+
 interface Theme {
   color: {
     [key in ColorKey]: string;
@@ -67,6 +71,18 @@ interface Theme {
       background: string;
       borderColor?: string;
       borderWidth?: string;
+    };
+  };
+  headingSize: {
+    [key in THeadingSize]: string;
+  };
+  bodySize: {
+    [key in TBodySize]: string;
+  };
+  snbSchema: {
+    [key in TSnbSchema]: {
+      color: string;
+      background: string;
     };
   };
 }
@@ -159,6 +175,35 @@ const theme: Theme = {
     grayBlack: {
       color: "#1F1F23",
       background: "#E6E6ED"
+    }
+  },
+  headingSize: {
+    T1: "32px",
+    T2: "28px",
+    T3: "24px",
+    T4: "22px",
+    T5: "20px",
+    T6: "20px",
+    T7: "20px"
+  },
+  bodySize: {
+    B1: "18px",
+    B2: "18px",
+    B3: "16px",
+    B4: "14px"
+  },
+  snbSchema: {
+    default: {
+      color: "#fff",
+      background: "rgba(255,255,255,0)"
+    },
+    hover: {
+      color: "#fff",
+      background: "rgba(255,255,255,0.10)"
+    },
+    selected: {
+      color: "#7467FF",
+      background: "rgba(255,255,255,0.90)"
     }
   }
 };
