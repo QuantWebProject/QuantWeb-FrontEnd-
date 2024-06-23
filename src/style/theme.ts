@@ -21,9 +21,30 @@ export type ColorKey =
 export type LayoutWidth = "large" | "medium" | "small";
 export type BorderRadius = "default";
 
+export type TButtonSchema =
+  | "inactivated"
+  | "inactivatedHover"
+  | "error"
+  | "activated"
+  | "activatedHover"
+  | "default"
+  | "defaultHover"
+  | "blackWhite"
+  | "grayBlack";
+
+export type TButtonSize =
+  | "wideTall" // 160x68
+  | "wideMedium" // 160x60
+  | "wideShort" // 160x52
+  | "narrowTall" // 140x68
+  | "narrowMedium" // 140x68
+  | "narrowShort" // 140x68
+  | "small"; // 60x60
+
 export type THeadingSize = "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
 export type TBodySize = "B1" | "B2" | "B3" | "B4";
 export type TSnbSchema = "default" | "hover" | "selected";
+
 interface Theme {
   color: {
     [key in ColorKey]: string;
@@ -37,6 +58,21 @@ interface Theme {
     [key in BorderRadius]: string;
   };
 
+  buttonSize: {
+    [key in TButtonSize]: {
+      width: string;
+      height: string;
+    };
+  };
+
+  buttonSchema: {
+    [key in TButtonSchema]: {
+      color: string;
+      background: string;
+      borderColor?: string;
+      borderWidth?: string;
+    };
+  };
   headingSize: {
     [key in THeadingSize]: string;
   };
@@ -80,7 +116,66 @@ const theme: Theme = {
     }
   },
   borderRadius: {
-    default: "0.75rem"
+    default: ".75rem"
+  },
+  buttonSize: {
+    wideTall: {
+      width: "160px",
+      height: "68px"
+    },
+    wideMedium: { width: "160px", height: "60px" },
+    wideShort: { width: "160px", height: "52px" },
+    narrowTall: {
+      width: "140px",
+      height: "68px"
+    },
+    narrowMedium: { width: "140px", height: "60px" },
+    narrowShort: { width: "140px", height: "52px" },
+    small: { width: "60px", height: "60px" }
+  },
+  buttonSchema: {
+    inactivated: {
+      color: "#878795",
+      background: "#D7D7E3"
+    },
+    inactivatedHover: {
+      color: "#878795",
+      background: "rgba(215, 215, 227, 0.40)"
+    },
+    error: {
+      color: "#878795",
+      background: "#D7D7E3",
+      borderColor: "#FF0000",
+      borderWidth: "1.4px"
+    },
+    activated: {
+      color: "#fff",
+      background: "#7467FF"
+    },
+    activatedHover: {
+      color: "#fff",
+      background: "#948BFF"
+    },
+    default: {
+      color: "#7467FF",
+      background: "transparent",
+      borderColor: "#7467FF",
+      borderWidth: "1px"
+    },
+    defaultHover: {
+      color: "#7467FF",
+      background: "#F0EEFF",
+      borderColor: "#7467FF",
+      borderWidth: "1px"
+    },
+    blackWhite: {
+      color: "#fff",
+      background: "#1F1F23"
+    },
+    grayBlack: {
+      color: "#1F1F23",
+      background: "#E6E6ED"
+    }
   },
   headingSize: {
     T1: "32px",
