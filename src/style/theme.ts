@@ -21,6 +21,7 @@ export type ColorKey =
 export type LayoutWidth = "large" | "medium" | "small";
 export type BorderRadius = "default";
 
+type BoxShadow = "shadow1" | "shadow2" | "shadow3";
 export type TButtonSchema =
   | "inactivated"
   | "inactivatedHover"
@@ -56,6 +57,9 @@ interface Theme {
   };
   borderRadius: {
     [key in BorderRadius]: string;
+  };
+  boxShadow: {
+    [key in BoxShadow]: string;
   };
 
   buttonSize: {
@@ -116,7 +120,12 @@ const theme: Theme = {
     }
   },
   borderRadius: {
-    default: ".75rem"
+    default: "0.75rem"
+  },
+  boxShadow: {
+    shadow1: "1px 2px 16px 0px rgba(0, 0, 0, 0.08)",
+    shadow2: "1px 2px 16px 0px rgba(0, 0, 0, 0.16)",
+    shadow3: "1px 2px 16px 0px rgba(0, 0, 0, 0.30)"
   },
   buttonSize: {
     wideTall: {
