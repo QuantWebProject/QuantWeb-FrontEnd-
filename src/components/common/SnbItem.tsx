@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Body from "./Body";
-import theme, { TSnbSchema } from "@/style/theme";
+import Title from "./Title";
+import { TSnbSchema } from "@/style/theme";
 import SnbText from "@/assets/images/SnbText.svg?react";
 interface Props {
   children: string;
@@ -11,13 +11,12 @@ interface Props {
 type TImage = "text";
 
 const SnbItem = ({ children, schema, image, prevent }: Props) => {
-  const fontColor = theme.snbSchema[schema].color;
   return (
     <SnbItemStyle schema={schema} image={image} prevent={prevent}>
       <div className="icon"> {<SnbText />}</div>
-      <Body size="T6" color={fontColor}>
+      <Title size="T6" color={schema === "default" ? "white" : "main"}>
         {children}
-      </Body>
+      </Title>
     </SnbItemStyle>
   );
 };

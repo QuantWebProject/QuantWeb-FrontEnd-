@@ -2,7 +2,7 @@ import Body from "@/components/common/Body";
 import SnbItem from "@/components/common/SnbItem";
 import Title from "@/components/common/Title";
 import styled from "styled-components";
-
+import LoginButton from "@/components/common/LoginButton";
 const Test = () => {
   return (
     <TestStyle>
@@ -16,6 +16,7 @@ const Test = () => {
       <SnbItem prevent={true} schema="selected" image="text">
         TEXT
       </SnbItem>
+      <LoginButton>로그인</LoginButton>
     </TestStyle>
   );
 };
