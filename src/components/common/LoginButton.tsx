@@ -44,5 +44,6 @@ const LoginButtonStyleStyle = styled.div<Omit<Props, "children">>`
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  cursor: pointer;
 `;
 export default LoginButton;

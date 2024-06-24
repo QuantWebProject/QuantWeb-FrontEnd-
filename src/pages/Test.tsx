@@ -1,39 +1,34 @@
-import Body from "@/components/common/Body";
-import SnbItem from "@/components/common/SnbItem";
-import Title from "@/components/common/Title";
+import SnbItem from "@/components/common/navbar/SnbItem";
 import styled from "styled-components";
-import LoginButton from "@/components/common/LoginButton?react";
-import SnbTextSVG from "@/assets/images/SnbText.svg?react";
-
+import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
+import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
+import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
+import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
+import NavBar from "@/components/common/navbar/NavBar";
 const SNB_ITEM = [
   {
-    icon: <SnbTextSVG/>,
+    icon: <SnbBackTestingSVG />,
     name: "백태스팅"
   },
-  {icon: <SnbTextSVG/>,
-    name: "모의투자"
-  },
-  {icon: <SnbTextSVG/>,
-    name: "마켓"
-  },
-  {icon: <SnbTextSVG/>,
-    name: "MY 대시보드"
-  }
+  { icon: <SnbMockInvestSVG />, name: "모의투자" },
+  { icon: <SnbMarketSVG />, name: "마켓" },
+  { icon: <SnbDashBoardSVG />, name: "MY 대시보드" }
 ];
 
 const Test = () => {
   return (
     <TestStyle>
-      <Title size="T1" color="gray10">
-        hello
-      </Title>
-      <Body size="B1"> hi </Body>
-      {
-        SNB_ITEM.map((item, index)=> (
-        <SnbItem key={index} text={item.name} schema="default" icon={item.icon} diasbled={false}/>
-      ))
-    }
-      <LoginButton>로그인</LoginButton>
+      <NavBar>
+        {SNB_ITEM.map((item, index) => (
+          <SnbItem
+            key={index}
+            text={item.name}
+            schema="default"
+            icon={item.icon}
+            diasbled={false}
+          />
+        ))}
+      </NavBar>
     </TestStyle>
   );
 };
