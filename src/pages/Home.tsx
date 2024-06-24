@@ -4,6 +4,9 @@ import InputWithDropdown from "@/components/common/InputWithDropdown"; //FIXME: 
 
 import FactorSetup from "@/components/BackTesting/FactorSetup";
 import TechnicalAnalysisStrategySetup from "@/components/BackTesting/TechnicalAnalysisStrategySetup";
+import Modal from "@/components/Modal/Modal";
+import { useState } from "react";
+import ModalInner from "@/components/Modal/ModalInner";
 
 //FIXME: 화면 확인용
 const OPTIONS = [
@@ -13,6 +16,12 @@ const OPTIONS = [
 ];
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleModalClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <HomeStyle>
       <h1>Home body</h1>
@@ -23,6 +32,9 @@ const Home = () => {
 
       <FactorSetup />
       <TechnicalAnalysisStrategySetup />
+      <Modal isOpen={isOpen} onClose={handleModalClose}>
+        <ModalInner onClose={handleModalClose}>모달창</ModalInner>
+      </Modal>
     </HomeStyle>
   );
 };
