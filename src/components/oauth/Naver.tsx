@@ -19,7 +19,7 @@ const Naver = () => {
     const handleLoginPost = async (code: string, state: string) => {
       const data: ILoginData = {
         code,
-        state,
+        state
       };
       try {
         await axios.post("/", data);

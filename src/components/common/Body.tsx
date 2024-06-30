@@ -1,8 +1,9 @@
+import { TBodySize } from "@/style/theme";
 import styled from "styled-components";
 
 interface Props {
   children: React.ReactNode;
-  size: string;
+  size: TBodySize;
   color?: string;
 }
 
@@ -16,8 +17,7 @@ const Body = ({ children, size, color }: Props) => {
 
 const BodyStyle = styled.div<Omit<Props, "children">>`
   font-size: ${({ theme, size }) => theme.bodySize[size]};
-  color: ${({ theme, color }) =>
-    color ? theme.color[color] : theme.color.gray10};
+  color: ${({ theme, color }) => (color ? color : theme.color.gray10)};
   line-height: ${({ size }) =>
     size === "B3" ? "150%" : size === "B4" ? "140%" : "160%"};
   font-weight: ${({ size }) => (size === "B1" ? 500 : 400)};

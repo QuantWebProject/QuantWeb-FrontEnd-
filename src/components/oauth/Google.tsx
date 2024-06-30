@@ -16,7 +16,7 @@ const Google = () => {
   useEffect(() => {
     const handleLoginPost = async (code: string) => {
       const data: ILoginData = {
-        code,
+        code
       };
       try {
         await axios.post("/", data);
