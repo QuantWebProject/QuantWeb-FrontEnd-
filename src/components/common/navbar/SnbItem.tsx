@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Title from "./Title";
+import Title from "../Title";
 import { TSnbSchema } from "@/style/theme";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 const SnbItem = ({ text, schema, icon, diasbled }: Props) => {
   return (
-    <SnbItemStyle $schema={schema} $disabled={diasbled? "true": "false"}>
+    <SnbItemStyle $schema={schema} $disabled={diasbled ? "true" : "false"}>
       <div className="icon"> {icon}</div>
       <Title size="T6" color={schema === "default" ? "white" : "main"}>
         {text}
@@ -25,9 +25,11 @@ interface SnbItemStyleProps {
   $disabled: string;
 }
 const SnbItemStyle = styled.div<SnbItemStyleProps>`
-  &:hover{
-    background: ${({ $disabled, theme }) => ($disabled ==="true" ? "" : theme.snbSchema["hover"].background)};
-    color: ${({ $disabled, theme }) => ($disabled === "true" ? "" : theme.snbSchema["hover"].color)};
+  &:hover {
+    background: ${({ $disabled, theme }) =>
+      $disabled === "true" ? "" : theme.snbSchema["hover"].background};
+    color: ${({ $disabled, theme }) =>
+      $disabled === "true" ? "" : theme.snbSchema["hover"].color};
   }
   display: flex;
   width: 280px;
@@ -38,11 +40,13 @@ const SnbItemStyle = styled.div<SnbItemStyleProps>`
   border-radius: 12px;
   background: ${({ theme, $schema }) => theme.snbSchema[$schema].background};
   color: ${({ theme, $schema }) => theme.snbSchema[$schema].color};
+  cursor: pointer;
   .icon {
     display: flex;
     align-items: center;
     svg {
       color: ${({ theme, $schema }) => theme.snbSchema[$schema].color};
     }
+  }
 `;
 export default SnbItem;
