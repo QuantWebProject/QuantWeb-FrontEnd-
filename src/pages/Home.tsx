@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Input from "@/components/common/Input"; //FIXME: 화면 확인용
-import InputWithDropdown from "@/components/common/InputWithDropdown"; //FIXME: 화면 확인용
+import InputWithCalendar from "@/components/common/InputWithCalendar"; //FIXME: 화면 확인용
 
 //FIXME: 화면 확인용
 const OPTIONS = [
@@ -16,7 +16,7 @@ const Home = () => {
 
       {/* FIXME: 화면 확인용 */}
       <Input placeholder="TEXT" error={"error!!"} {..."text"} />
-      <InputWithDropdown options={OPTIONS} />
+      <InputWithCalendar />
     </HomeStyle>
   );
 };
