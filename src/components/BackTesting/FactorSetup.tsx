@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SetupTitle from "../common/SetupTitle";
 import FactorDropdown from "./FactorDropdown";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const OPTIONS = [
   {
@@ -35,7 +35,7 @@ const OPTIONS2 = [
 
 const FactorSetup = () => {
   const [optionsActive, setOptionsActive] = useState<number[]>([]);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  // const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   /** 선택한 팩터 요소를 배열에 추가, 삭제 */
   const handleOptionsActive = (id: number) => {
@@ -49,7 +49,7 @@ const FactorSetup = () => {
   console.log("팩터 설정 options: ", optionsActive);
 
   return (
-    <FactorSetupStyle ref={dropdownRef}>
+    <FactorSetupStyle>
       <SetupTitle title="팩터 설정" info="*복수선택 가능" />
       <FactorDropdown
         title="가치"
@@ -57,7 +57,6 @@ const FactorSetup = () => {
         options={OPTIONS}
         optionsActive={optionsActive}
         onCheck={handleOptionsActive}
-        dropdownRef={dropdownRef}
         open
       />
       <FactorDropdown
@@ -66,7 +65,6 @@ const FactorSetup = () => {
         options={OPTIONS2}
         optionsActive={optionsActive}
         onCheck={handleOptionsActive}
-        dropdownRef={dropdownRef}
       />
     </FactorSetupStyle>
   );

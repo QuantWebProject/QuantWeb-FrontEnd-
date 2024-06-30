@@ -38,8 +38,8 @@ export type TButtonSize =
   | "wideMedium" // 160x60
   | "wideShort" // 160x52
   | "narrowTall" // 140x68
-  | "narrowMedium" // 140x68
-  | "narrowShort" // 140x68
+  | "narrowMedium" // 140x60
+  | "narrowShort" // 140x52
   | "small"; // 60x60
 
 export type THeadingSize = "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
