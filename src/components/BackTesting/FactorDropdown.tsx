@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ArrowDownSVG from "@/assets/images/arrowDown.svg?react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FactorItem from "./FactorItem";
 import ToolTip from "../common/ToolTip";
 
@@ -16,7 +16,6 @@ interface Props {
   open?: boolean; // 드롭다운이 열려있으면 true
   onCheck: (id: number) => void;
   optionsActive: number[];
-  dropdownRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 const FactorDropdown = ({
   title,
@@ -24,27 +23,12 @@ const FactorDropdown = ({
   options,
   onCheck,
   optionsActive,
-  open,
-  dropdownRef
+  open
 }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(open || false);
 
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, [dropdownRef]);
-
   return (
-    <FactorDropdownStyle $open={isOpen} ref={dropdownRef}>
+    <FactorDropdownStyle $open={isOpen}>
       <div className="select-box" onClick={() => setIsOpen((prev) => !prev)}>
         <div className="select-box-left">
           <div className="icon">
