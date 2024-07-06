@@ -3,23 +3,7 @@ import SetupTitle from "../common/SetupTitle";
 import { OptionContainer } from "./FactorDropdown";
 import { useState } from "react";
 import FactorItem from "./FactorItem";
-
-const OPTIONS = [
-  {
-    id: 0,
-    name: "Static Asset Allocation",
-    info: ""
-  },
-  {
-    id: 1,
-    name: "Tactical Asset Allocation",
-    info: ""
-  },
-  { id: 2, name: "MACD", info: "" },
-  { id: 3, name: "Trend Following", info: "" },
-  { id: 4, name: "RSI", info: "" },
-  { id: 5, name: "볼린저 밴드", info: "" }
-];
+import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
 
 const TechnicalAnalysisStrategySetup = () => {
   const [optionsActive, setOptionsActive] = useState<number[]>([]);
@@ -40,7 +24,7 @@ const TechnicalAnalysisStrategySetup = () => {
       <SetupTitle title="기술 분석 전략" info="*1개 선택" />
       <OptionContainer>
         <ul>
-          {OPTIONS.map(({ id, name, info }) => (
+          {FACTOR_STRATEGY_LIST.technical.map(({ id, name, info }) => (
             <li key={id} onClick={() => () => handleOptionsActive(id)}>
               <FactorItem
                 id={id}

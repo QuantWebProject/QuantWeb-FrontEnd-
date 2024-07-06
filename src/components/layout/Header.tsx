@@ -23,7 +23,10 @@ const Header = () => {
 
 const HeaderStyle = styled.div`
   display: flex;
-  width: 1576px;
+  width: calc(100vw - 344px);
+  position: fixed;
+  top: 0;
+  left: 344px;
   padding: 32px 24px;
   align-items: center;
   gap: 40px;
