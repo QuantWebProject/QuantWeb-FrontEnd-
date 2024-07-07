@@ -5,6 +5,7 @@ import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
 import NavBar from "@/components/common/navbar/NavBar";
+import BasicSetup from "@/components/BackTesting/BasicSetup";
 const SNB_ITEM = [
   {
     icon: <SnbBackTestingSVG />,
@@ -17,24 +18,35 @@ const SNB_ITEM = [
 
 const Test = () => {
   return (
-    <TestStyle>
-      <NavBar>
-        {SNB_ITEM.map((item, index) => (
-          <SnbItem
-            key={index}
-            text={item.name}
-            schema="default"
-            icon={item.icon}
-            diasbled={false}
-          />
-        ))}
-      </NavBar>
-    </TestStyle>
+    <>
+      <TestStyle>
+        <NavBar>
+          {SNB_ITEM.map((item, index) => (
+            <SnbItem
+              key={index}
+              text={item.name}
+              schema="default"
+              icon={item.icon}
+              diasbled={false}
+            />
+          ))}
+        </NavBar>
+        <Page>
+          <BasicSetup />
+        </Page>
+      </TestStyle>
+    </>
   );
 };
 
 const TestStyle = styled.div`
-  background-color: grey;
+  background-color: #efeff1;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Page = styled.div`
+  background-color: #efeff1;
 `;
 
 export default Test;

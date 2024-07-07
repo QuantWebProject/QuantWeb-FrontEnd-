@@ -11,7 +11,7 @@ import { PickersDay } from "@mui/x-date-pickers/PickersDay";
 import { styled } from "@mui/material/styles";
 
 const InputWithCalendar = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
@@ -24,7 +24,7 @@ const InputWithCalendar = () => {
             width: "100%",
             borderRadius: "30px"
           }}
-          onChange={(newValue) => {
+          onChange={(newValue: string) => {
             setSelectedDate(newValue);
           }}
           slots={{
