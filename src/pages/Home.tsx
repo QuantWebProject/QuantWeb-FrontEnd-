@@ -3,13 +3,10 @@ import styled from "styled-components";
 import InputWithDropdown from "@/components/common/InputWithDropdown"; //FIXME: 화면 확인용
 import InputWithCalendar from "@/components/common/InputWithCalendar"; //FIXME: 화면 확인용
 
-import FactorSetup from "@/components/Backtesting/FactorSetup";
-import TechnicalAnalysisStrategySetup from "@/components/Backtesting/TechnicalAnalysisStrategySetup";
-import Modal from "@/components/Modal/Modal";
-import ModalInner from "@/components/Modal/ModalInner";
 import MyStrategyList from "@/components/myStrategyFAB/MyStrategyList";
-import useModal from "@/hooks/useModal";
 import StrategyNameChange from "@/components/myStrategyFAB/StrategyNameChange";
+import FactorSetup from "@/components/backtesting/FactorSetup";
+import TechnicalAnalysisStrategySetup from "@/components/backtesting/TechnicalAnalysisStrategySetup";
 
 //FIXME: 화면 확인용
 const OPTIONS = [
@@ -19,9 +16,6 @@ const OPTIONS = [
 ];
 
 const Home = () => {
-  const { modalRef, isOpen, handleModalClose, handleOverlayClick } =
-    useModal(true);
-
   return (
     <HomeStyle>
       <h1>Home body</h1>
@@ -32,13 +26,7 @@ const Home = () => {
       <InputWithCalendar />
       <FactorSetup />
       <TechnicalAnalysisStrategySetup />
-      <Modal
-        modalRef={modalRef}
-        isOpen={isOpen}
-        handleOverlayClick={handleOverlayClick}
-      >
-        <ModalInner onClose={handleModalClose}>모달창</ModalInner>
-      </Modal>
+
       <MyStrategyList />
       <StrategyNameChange />
     </HomeStyle>
