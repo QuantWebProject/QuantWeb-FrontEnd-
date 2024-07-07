@@ -1,40 +1,13 @@
-import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 interface Props {
   children: React.ReactNode;
+  modalRef: React.RefObject<HTMLDivElement>;
   isOpen: boolean;
-  onClose: () => void;
+  handleOverlayClick: (e: React.MouseEvent) => void;
 }
 
-const Modal = ({ children, isOpen, onClose }: Props) => {
-  const modalRef = useRef<HTMLDivElement | null>(null);
-
-  // 모달창 바깥을 누르면 닫힘
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      console.log("click");
-      onClose();
-    }
-  };
-
-  // esc 키를 누르면 닫힘
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      window.removeEventListener("keydown", handleKeyDown);
-    }
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
-
+const Modal = ({ children, modalRef, isOpen, handleOverlayClick }: Props) => {
   return (
     <>
       {isOpen && (
