@@ -15,6 +15,19 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
 
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
     
 `;
 
