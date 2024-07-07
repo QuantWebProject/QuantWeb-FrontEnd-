@@ -1,0 +1,16 @@
+/* Chrome, Whale, Edge */
+
+/* 스크롤바 전체 기본 꾸미기 */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 스크롤바 막대 꾸미기 */
+*::-webkit-scrollbar-thumb {
+  background-color: #d7d7e3;
+  border-radius: 10px; /* 둥글게 처리하고 싶다면 추가 */
+}
+
+/* 스크롤바 트랙 꾸미기 */
+*::-webkit-scrollbar-track {
+}
