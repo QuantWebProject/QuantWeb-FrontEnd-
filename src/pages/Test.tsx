@@ -4,6 +4,7 @@ import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
 import NavBar from "@/components/common/navbar/NavBar";
+import BasicSetup from "@/components/BackTesting/BasicSetup";
 export const SNB_ITEM = [
   {
     icon: <SnbBackTestingSVG />,
@@ -18,12 +19,21 @@ const Test = () => {
   return (
     <TestStyle>
       <NavBar />
+      <Page>
+        <BasicSetup />
+      </Page>
     </TestStyle>
   );
 };
 
 const TestStyle = styled.div`
-  background-color: grey;
+  background-color: #efeff1;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Page = styled.div`
+  background-color: #efeff1;
 `;
 
 export default Test;
