@@ -53,9 +53,9 @@ const ModalStyle = styled.div`
   inset: 0;
   background: ${({ theme }) => theme.color.dimmed};
 
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Modal;
