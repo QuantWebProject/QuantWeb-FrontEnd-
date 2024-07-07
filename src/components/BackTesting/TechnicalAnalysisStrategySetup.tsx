@@ -1,25 +1,9 @@
 import styled from "styled-components";
 import SetupTitle from "../common/SetupTitle";
-import { OptionContainer } from "./FactorDropdown";
 import { useState } from "react";
+import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
 import FactorItem from "./FactorItem";
-
-const OPTIONS = [
-  {
-    id: 0,
-    name: "Static Asset Allocation",
-    info: ""
-  },
-  {
-    id: 1,
-    name: "Tactical Asset Allocation",
-    info: ""
-  },
-  { id: 2, name: "MACD", info: "" },
-  { id: 3, name: "Trend Following", info: "" },
-  { id: 4, name: "RSI", info: "" },
-  { id: 5, name: "볼린저 밴드", info: "" }
-];
+import { OptionContainer } from "./FactorDropdown";
 
 const TechnicalAnalysisStrategySetup = () => {
   const [optionsActive, setOptionsActive] = useState<number[]>([]);
@@ -40,7 +24,7 @@ const TechnicalAnalysisStrategySetup = () => {
       <SetupTitle title="기술 분석 전략" info="*1개 선택" />
       <OptionContainer>
         <ul>
-          {OPTIONS.map(({ id, name, info }) => (
+          {FACTOR_STRATEGY_LIST.technical.map(({ id, name, info }) => (
             <li key={id} onClick={() => () => handleOptionsActive(id)}>
               <FactorItem
                 id={id}
@@ -53,9 +37,23 @@ const TechnicalAnalysisStrategySetup = () => {
           ))}
         </ul>
       </OptionContainer>
+      <div className="empty-bottom"></div>
     </TechnicalAnalysisStrategySetupStyle>
   );
 };
 
-const TechnicalAnalysisStrategySetupStyle = styled.div``;
+const TechnicalAnalysisStrategySetupStyle = styled.div`
+  border-radius: 1.125rem;
+  border: 1px solid ${({ theme }) => theme.color.gray3};
+  background-color: #fff;
+  box-shadow: ${({ theme }) => theme.boxShadow.shadow1};
+
+  ul {
+    background: ${({ theme }) => theme.color.sub1};
+  }
+  .empty-bottom {
+    height: 16px;
+    border-radius: 0 0 1.125rem 1.125rem;
+  }
+`;
 export default TechnicalAnalysisStrategySetup;

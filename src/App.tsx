@@ -7,6 +7,10 @@ import { queryClient } from "./api/queryClient";
 import { Provider } from "react-redux";
 import store from "./store";
 import Test from "./pages/Test";
+import BackTesting from "./pages/BackTesting";
+import MockInvestment from "./pages/MockInvestment";
+import Market from "./pages/Market";
+import MyDashboard from "./pages/MyDashboard";
 
 const routeList = [
   {
@@ -20,6 +24,22 @@ const routeList = [
   {
     path: "/test",
     element: <Test />
+  },
+  {
+    path: "/backtesting",
+    element: <BackTesting />
+  },
+  {
+    path: "/mock-investment",
+    element: <MockInvestment />
+  },
+  {
+    path: "/market",
+    element: <Market />
+  },
+  {
+    path: "/my-dashboard",
+    element: <MyDashboard />
   }
 ];
 
