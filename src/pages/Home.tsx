@@ -3,8 +3,8 @@ import styled from "styled-components";
 import InputWithDropdown from "@/components/common/InputWithDropdown"; //FIXME: 화면 확인용
 import InputWithCalendar from "@/components/common/InputWithCalendar"; //FIXME: 화면 확인용
 
-import FactorSetup from "@/components/Backtesting/FactorSetup";
-import TechnicalAnalysisStrategySetup from "@/components/Backtesting/TechnicalAnalysisStrategySetup";
+import FactorSetup from "@/components/BackTesting/FactorSetup";
+import TechnicalAnalysisStrategySetup from "@/components/BackTesting/TechnicalAnalysisStrategySetup";
 import Modal from "@/components/Modal/Modal";
 import { useState } from "react";
 import ModalInner from "@/components/Modal/ModalInner";
