@@ -22,6 +22,12 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+    fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
     
 `;
 

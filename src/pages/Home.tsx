@@ -9,6 +9,7 @@ import Modal from "@/components/Modal/Modal";
 import ModalInner from "@/components/Modal/ModalInner";
 import MyStrategyList from "@/components/myStrategyFAB/MyStrategyList";
 import useModal from "@/hooks/useModal";
+import StrategyNameChange from "@/components/myStrategyFAB/StrategyNameChange";
 
 //FIXME: 화면 확인용
 const OPTIONS = [
@@ -39,6 +40,7 @@ const Home = () => {
         <ModalInner onClose={handleModalClose}>모달창</ModalInner>
       </Modal>
       <MyStrategyList />
+      <StrategyNameChange />
     </HomeStyle>
   );
 };
