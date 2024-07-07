@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import SetupTitle from "../common/SetupTitle";
-import FactorDropdown from "./FactorDropdown";
 import { useState } from "react";
 import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
+import FactorDropdown from "./FactorDropdown";
 
 const FactorSetup = () => {
   const [optionsActive, setOptionsActive] = useState<number[]>([]);
@@ -37,9 +37,21 @@ const FactorSetup = () => {
         optionsActive={optionsActive}
         onCheck={handleOptionsActive}
       />
+      <div className="empty-bottom"></div>
     </FactorSetupStyle>
   );
 };
 
-const FactorSetupStyle = styled.div``;
+const FactorSetupStyle = styled.div`
+  border-radius: 1.125rem;
+  border: 1px solid ${({ theme }) => theme.color.gray3};
+  box-shadow: ${({ theme }) => theme.boxShadow.shadow1};
+  background-color: #fff;
+
+  .empty-bottom {
+    height: 16px;
+    border-radius: 0 0 1.125rem 1.125rem;
+  }
+`;
+
 export default FactorSetup;

@@ -69,16 +69,32 @@ export const FACTOR_STRATEGY_LIST: TFactorStrategyList = {
     {
       id: 0,
       name: "Static Asset Allocation",
-      info: ""
+      info: "본인이 매수/매도하고 싶은 종목과 수량을 한국투자증권에서 제공하는 API를 통해 주문을 실행하는 방식입니다."
     },
     {
       id: 1,
       name: "Tactical Asset Allocation",
-      info: ""
+      info: "본인이 매수/매도하고 싶은 종목과 수량을 한국투자증권에서 제공하는 API를 통해 주문을 실행하는 방식입니다."
     },
-    { id: 2, name: "MACD", info: "" },
-    { id: 3, name: "Trend Following", info: "" },
-    { id: 4, name: "RSI", info: "" },
-    { id: 5, name: "볼린저 밴드", info: "" }
+    {
+      id: 2,
+      name: "MACD",
+      info: "본인이 매수/매도하고 싶은 종목과 수량을 한국투자증권에서 제공하는 API를 통해 주문을 실행하는 방식입니다."
+    },
+    {
+      id: 3,
+      name: "Trend Following",
+      info: "본인이 매수/매도하고 싶은 종목과 수량을 한국투자증권에서 제공하는 API를 통해 주문을 실행하는 방식입니다."
+    },
+    {
+      id: 4,
+      name: "RSI",
+      info: "본인이 매수/매도하고 싶은 종목과 수량을 한국투자증권에서 제공하는 API를 통해 주문을 실행하는 방식입니다."
+    },
+    {
+      id: 5,
+      name: "볼린저 밴드",
+      info: "본인이 매수/매도하고 싶은 종목과 수량을 한국투자증권에서 제공하는 API를 통해 주문을 실행하는 방식입니다."
+    }
   ]
 };

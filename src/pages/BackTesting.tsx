@@ -1,5 +1,5 @@
-import FactorSetup from "@/components/BackTesting/FactorSetup";
-import TechnicalAnalysisStrategySetup from "@/components/BackTesting/TechnicalAnalysisStrategySetup";
+import FactorSetup from "@/components/Backtesting/FactorSetup";
+import TechnicalAnalysisStrategySetup from "@/components/Backtesting/TechnicalAnalysisStrategySetup";
 import styled from "styled-components";
 
 const BackTesting = () => {
