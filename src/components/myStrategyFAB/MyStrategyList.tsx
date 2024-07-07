@@ -1,10 +1,10 @@
 import { IAllStrategy } from "@/models/backtesting";
 import { useState } from "react";
 import styled from "styled-components";
-import XButton from "../Modal/XButton";
 import Title from "../common/Title";
 import Body from "../common/Body";
 import MyStrategyListItem from "./MyStrategyListItem";
+import XButton from "../modal/XButton";
 
 const MyStrategyList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true);

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { FABHeader } from "./MyStrategyList";
 import Title from "../common/Title";
-import XButton from "../Modal/XButton";
 import { useState } from "react";
+import XButton from "../modal/XButton";
 
 const StrategyNameChange = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
