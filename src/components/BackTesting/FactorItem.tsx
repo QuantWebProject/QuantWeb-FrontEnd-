@@ -34,7 +34,7 @@ const FactorItemStyle = styled.div<{ $isChecked: boolean }>`
   width: 23rem;
   height: 3.75rem;
   width: 100%;
-  background: ${({ theme }) => theme.color.white};
+  background-color: inherit;
 
   .icon {
     margin-right: 0.75rem;
