@@ -10,11 +10,12 @@ import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
 const SNB_ITEM = [
   {
     icon: <SnbBackTestingSVG />,
-    name: "백태스팅"
+    name: "백태스팅",
+    path: "/backtesting"
   },
-  { icon: <SnbMockInvestSVG />, name: "모의투자" },
-  { icon: <SnbMarketSVG />, name: "마켓" },
-  { icon: <SnbDashBoardSVG />, name: "MY 대시보드" }
+  { icon: <SnbMockInvestSVG />, name: "모의투자", path: "/test" },
+  { icon: <SnbMarketSVG />, name: "마켓", path: "/" },
+  { icon: <SnbDashBoardSVG />, name: "MY 대시보드", path: "/" }
 ];
 
 const NavBar = () => {
@@ -31,6 +32,7 @@ const NavBar = () => {
                 schema="default"
                 icon={item.icon}
                 diasbled={false}
+                path={item.path}
               />
             ))}
           </SnbItemStyle>
