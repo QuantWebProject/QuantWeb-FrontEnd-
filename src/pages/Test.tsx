@@ -5,6 +5,7 @@ import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
 import NavBar from "@/components/common/navbar/NavBar";
 import BasicSetup from "@/components/backtesting/BasicSetup";
+import BackTestingResult from "./BackTestingResult";
 export const SNB_ITEM = [
   {
     icon: <SnbBackTestingSVG />,
@@ -20,7 +21,7 @@ const Test = () => {
     <TestStyle>
       <NavBar />
       <Page>
-        <BasicSetup />
+        <BackTestingResult />
       </Page>
     </TestStyle>
   );
