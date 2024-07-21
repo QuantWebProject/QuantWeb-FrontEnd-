@@ -7,6 +7,7 @@ import MyStrategyList from "@/components/myStrategyFAB/MyStrategyList";
 import StrategyNameChange from "@/components/myStrategyFAB/StrategyNameChange";
 import FactorSetup from "@/components/backtesting/FactorSetup";
 import TechnicalAnalysisStrategySetup from "@/components/backtesting/TechnicalAnalysisStrategySetup";
+import ValueChart from "@/components/backtesting/chart/ValueChart";
 
 //FIXME: 화면 확인용
 const OPTIONS = [
@@ -29,6 +30,7 @@ const Home = () => {
 
       <MyStrategyList />
       <StrategyNameChange />
+      <ValueChart />
     </HomeStyle>
   );
 };
