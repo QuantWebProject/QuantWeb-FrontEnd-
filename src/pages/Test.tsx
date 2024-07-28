@@ -3,6 +3,7 @@ import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
+import MyPageModal from "@/components/Modal/MyPageModal";
 import SocialLoginModal from "@/components/Modal/SocialLoginModal";
 
 export const SNB_ITEM = [
@@ -19,6 +20,7 @@ const Test = () => {
   return (
     <TestStyle>
       <SocialLoginModal></SocialLoginModal>
+      <MyPageModal></MyPageModal>
     </TestStyle>
   );
 };
