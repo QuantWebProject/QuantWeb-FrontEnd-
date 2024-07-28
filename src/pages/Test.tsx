@@ -3,9 +3,8 @@ import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
-import MyPageModal from "@/components/Modal/MyPageModal";
-import SocialLoginModal from "@/components/Modal/SocialLoginModal";
-
+import NavBar from "@/components/common/navbar/NavBar";
+import BasicSetup from "@/components/backtesting/BasicSetup";
 export const SNB_ITEM = [
   {
     icon: <SnbBackTestingSVG />,
@@ -19,14 +18,22 @@ export const SNB_ITEM = [
 const Test = () => {
   return (
     <TestStyle>
-      <SocialLoginModal></SocialLoginModal>
-      <MyPageModal></MyPageModal>
+      <NavBar />
+      <Page>
+        <BasicSetup />
+      </Page>
     </TestStyle>
   );
 };
 
 const TestStyle = styled.div`
-  background-color: grey;
+  background-color: #efeff1;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Page = styled.div`
+  background-color: #efeff1;
 `;
 
 export default Test;

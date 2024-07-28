@@ -1,11 +1,14 @@
-import FactorSetup from "@/components/BackTesting/FactorSetup";
-import TechnicalAnalysisStrategySetup from "@/components/BackTesting/TechnicalAnalysisStrategySetup";
+import BasicSetup from "@/components/backtesting/BasicSetup";
+import FactorSetup from "@/components/backtesting/FactorSetup";
+import TechnicalAnalysisStrategySetup from "@/components/backtesting/TechnicalAnalysisStrategySetup";
 import styled from "styled-components";
 
 const BackTesting = () => {
   return (
     <BackTestingStyle>
-      <div className="setting left-setting"></div>
+      <div className="setting left-setting">
+        <BasicSetup />
+      </div>
       <div className="setting middle-setting">
         <div className="factor-setup">
           <FactorSetup />
@@ -23,7 +26,7 @@ const BackTestingStyle = styled.div`
   padding: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  height: calc(100vh - 124px);
+  min-height: calc(100vh - 124px);
   background-color: ${({ theme }) => theme.color.gray1};
 
   .setting {

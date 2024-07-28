@@ -71,15 +71,17 @@ const SelectBoxContainer = styled.div`
   flex-direction: column;
   gap: 8px;
   cursor: pointer;
+  background-color: #fff;
 `;
 
 const OptionContainer = styled.div`
   border-radius: 8px;
   border: 1px solid #c8c8d6;
-  background: #fff;
+  background-color: #fff;
   box-shadow: 1px 2px 16px 0px rgba(0, 0, 0, 0.16);
   padding: 0.5rem 0;
-
+  position: relative;
+  z-index: 10;
   ul,
   li {
     list-style: none;
