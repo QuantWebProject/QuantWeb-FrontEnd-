@@ -21,7 +21,7 @@ const SocialLoginModal = () => {
         <div className="social-buttons">
           <SocialLoginButton schema="google" />
           <SocialLoginButton schema="kakao" />
-          
+
           <SocialLoginButton schema="naver" />
         </div>
       </div>
