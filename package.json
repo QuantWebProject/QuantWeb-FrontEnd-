@@ -23,6 +23,7 @@
     "chart.js": "^4.4.3",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.11",
+    "qs": "^6.13.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +32,7 @@
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.15",
     "@types/react": "^18.2.66",
     "@types/react-datepicker": "^6.2.0",
     "@types/react-dom": "^18.2.22",
