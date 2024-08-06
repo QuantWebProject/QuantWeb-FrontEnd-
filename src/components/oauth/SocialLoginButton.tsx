@@ -38,12 +38,13 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   schema: TSchema;
 }
 
-const SocialLoginButton = ({ schema }: Props) => {
+const SocialLoginButton = ({ schema, ...props }: Props) => {
   return (
     <SocialLoginButtonStyle
       $schema={schema}
       $color={buttonStyle[schema].color}
       $background={buttonStyle[schema].background}
+      {...props}
     >
       <div className="icon">{buttonStyle[schema].icon}</div>
       <span>{buttonStyle[schema].text}</span>

@@ -2,8 +2,20 @@ import styled from "styled-components";
 import SocialLoginButton from "../oauth/SocialLoginButton";
 import Title from "../common/Title";
 import XButton from "./XButton";
+import { ToauthType } from "@/models/member";
+import { requestLoginCode } from "@/api/member";
 
 const SocialLoginModal = () => {
+  const handleLoginCode = (type: ToauthType) => {
+    requestLoginCode({ type, pathUrl: window.location.pathname })
+      .then(() => {
+        console.log(`⭕ | 성공!`);
+      })
+      .catch((err) => {
+        console.log(`❌ ${err}`);
+      });
+  };
+
   return (
     <SocialLoginModalStyle>
       <div className="modal-header">
@@ -19,10 +31,18 @@ const SocialLoginModal = () => {
           </Title>
         </div>
         <div className="social-buttons">
-          <SocialLoginButton schema="google" />
-          <SocialLoginButton schema="kakao" />
-
-          <SocialLoginButton schema="naver" />
+          <SocialLoginButton
+            schema="google"
+            onClick={() => handleLoginCode("google")}
+          />
+          <SocialLoginButton
+            schema="kakao"
+            onClick={() => handleLoginCode("kakao")}
+          />
+          <SocialLoginButton
+            schema="naver"
+            onClick={() => handleLoginCode("naver")}
+          />
         </div>
       </div>
     </SocialLoginModalStyle>

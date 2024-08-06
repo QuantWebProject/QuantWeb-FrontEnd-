@@ -1,4 +1,3 @@
-import Login from "@/pages/Login";
 import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -16,10 +15,6 @@ const routeList = [
   {
     path: "/",
     element: <Home />
-  },
-  {
-    path: "/login",
-    element: <Login />
   },
   {
     path: "/test",

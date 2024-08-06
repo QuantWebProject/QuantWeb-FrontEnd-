@@ -1,12 +1,12 @@
 export type ToauthType = "kakao" | "naver" | "google";
 
 export interface IRequestLoginCode {
-  redirectUrl: string;
+  pathUrl: string;
   type: ToauthType;
 }
 
 export interface ILogin {
   code: string;
-  redirectUrl: string;
+  pathUrl: string;
   type: ToauthType;
 }

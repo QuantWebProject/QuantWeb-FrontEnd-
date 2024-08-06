@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 
 const BASE_URL =
   "http://ec2-43-203-37-134.ap-northeast-2.compute.amazonaws.com:8080";
-const TIME_OUT = 30000;
+const TIME_OUT = 10000;
 
 export const http = axios.create({
   baseURL: BASE_URL,
