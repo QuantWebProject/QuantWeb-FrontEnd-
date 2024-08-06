@@ -6,7 +6,8 @@ const TIME_OUT = 30000;
 
 export const http = axios.create({
   baseURL: BASE_URL,
-  timeout: TIME_OUT
+  timeout: TIME_OUT,
+  withCredentials: true
 });
 
 const onResponse = (res: AxiosResponse) => {
