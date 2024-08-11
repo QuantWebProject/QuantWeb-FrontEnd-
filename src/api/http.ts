@@ -5,10 +5,10 @@ import { refresh } from "./member";
 const IS_DEV_MODE = import.meta.env.MODE === "development";
 
 // todo: 추후에 도메인 일치 시 삭제
-const SERVER_BASE_URL =
-  "http://ec2-43-203-223-126.ap-northeast-2.compute.amazonaws.com:8080";
+export const SERVER_BASE_URL =
+  "http://ec2-43-203-37-134.ap-northeast-2.compute.amazonaws.com:8080"; // proxy 설정도 같이 변경해야함!
 
-const BASE_URL = IS_DEV_MODE ? "/api" : `${SERVER_BASE_URL}/api`;
+const BASE_URL = IS_DEV_MODE ? `/api` : `${SERVER_BASE_URL}/api`;
 const TIME_OUT = 10000;
 
 let isAlreadyAlerted = false; // 전역 플래그 변수, 중복으로 401 처리하는 것 방지
