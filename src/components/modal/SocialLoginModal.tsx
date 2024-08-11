@@ -5,11 +5,15 @@ import Title from "../common/Title";
 import SocialLoginButton from "../oauth/SocialLoginButton";
 import XButton from "./XButton";
 
-const SocialLoginModal = () => {
+interface Props {
+  onClose: () => void;
+}
+
+const SocialLoginModal = ({ onClose }: Props) => {
   const handleLoginCode = (type: ToauthType) => {
     requestLoginCode(type)
       .then((res) => {
-        console.log(`⭕ | request login code 성공!`);
+        console.log(`⭕ request login code 성공!`);
         window.location.href = res.data.oauthLink;
       })
       .catch((err) => {
@@ -23,7 +27,7 @@ const SocialLoginModal = () => {
         <Title size="T2" color="gray10">
           로그인 또는 회원가입
         </Title>
-        <XButton onClose={() => {}} />
+        <XButton onClose={onClose} />
       </div>
       <div className="modal-body">
         <div className="notice">
@@ -56,6 +60,7 @@ const SocialLoginModalStyle = styled.div`
   background-color: white;
   border-radius: 18px;
   position: relative;
+  z-index: 1000;
   .modal-header {
     height: 84px;
     display: flex;

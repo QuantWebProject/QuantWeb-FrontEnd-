@@ -3,6 +3,7 @@ import { useTypedDispatch } from "@/hooks/redux";
 import { ToauthType } from "@/models/member";
 import { setLogin } from "@/store/slices/authSlice";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Callback = () => {
@@ -12,21 +13,24 @@ const Callback = () => {
   const type = splitUrl[splitUrl.length - 1]; // type 추출
 
   const dispatch = useTypedDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (code) {
       login(code, pathUrl, type as ToauthType)
         .then(() => {
-          console.log(`⭕ | login 성공!`);
+          console.log(`⭕ login 성공!`);
           dispatch(setLogin());
+          navigate("/"); // todo: 이전 페이지로 이동 (주의: navigate(-1)을 사용하면 이전 페이지로 돌아가면서 상태가 초기화될 수 있음)
         })
         .catch((err) => console.log(`❌ ${err}`));
     }
-  }, [code, pathUrl, type, dispatch]);
+  }, [code, pathUrl, type, dispatch, navigate]);
 
   return (
     <CallbackStyle>
-      <h1>로딩중...</h1>
+      {/* todo: 대체할 이미지 */}
+      <h1>로딩중 딩링링...</h1>
     </CallbackStyle>
   );
 };

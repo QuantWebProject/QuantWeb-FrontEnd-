@@ -3,9 +3,11 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 // todo: env 파일로 분리
 const IS_DEV_MODE = import.meta.env.MODE === "development";
 
-const BASE_URL = IS_DEV_MODE
-  ? "/api"
-  : "http://ec2-43-203-223-126.ap-northeast-2.compute.amazonaws.com:8080";
+// todo: 추후에 도메인 일치 시 삭제
+const SERVER_BASE_URL =
+  "http://ec2-43-203-223-126.ap-northeast-2.compute.amazonaws.com:8080";
+
+const BASE_URL = IS_DEV_MODE ? "/api" : `${SERVER_BASE_URL}/api`;
 const TIME_OUT = 10000;
 
 export const http = axios.create({

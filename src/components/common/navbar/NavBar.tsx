@@ -1,9 +1,14 @@
+import { http } from "@/api/http";
 import QuantLogoSVG from "@/assets/images/QuantLogo.svg?react";
 import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
+import Modal from "@/components/modal/Modal";
+import SocialLoginModal from "@/components/modal/SocialLoginModal";
+import { MEMBER_API } from "@/constants/apiPath";
 import { useTypedDispatch, useTypedSelector } from "@/hooks/redux";
+import useModal from "@/hooks/useModal";
 import { setLogout } from "@/store/slices/authSlice";
 import styled from "styled-components";
 import LoginButton from "../LoginButton";
@@ -24,15 +29,30 @@ const NavBar = () => {
   const { isLoggedIn } = useTypedSelector((state) => state.auth);
   const dispatch = useTypedDispatch();
 
+  const { isOpen, modalOpen, modalClose } = useModal(false);
+
+  const logout = () => {
+    http
+      .post(MEMBER_API.logout)
+      .then(() => {
+        console.log(`⭕ logout 성공!`);
+        dispatch(setLogout());
+      })
+      .catch((err) => console.log(`❌ ${err}`));
+  };
+
   const handleLog = (type: "login" | "logout") => {
     const handlers = {
-      login: () => {},
+      login: () => {
+        modalOpen();
+      },
       logout: () => {
-        dispatch(setLogout());
+        logout();
       }
     };
     handlers[type]();
   };
+
   return (
     <NavBarStyle>
       <SnbItemWithTitleAndLoginButtonStyle>
@@ -55,6 +75,11 @@ const NavBar = () => {
           {isLoggedIn ? "로그아웃" : "로그인"}
         </LoginButton>
       </SnbItemWithTitleAndLoginButtonStyle>
+      {isOpen && (
+        <Modal onClose={modalClose}>
+          <SocialLoginModal onClose={modalClose} />
+        </Modal>
+      )}
     </NavBarStyle>
   );
 };
