@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import DailyCumulativeReturn from "@/components/backtestingResult/DailyCumulativeReturn";
+import Mdd from "@/components/backtestingResult/Mdd";
 const BackTestingResult = () => {
-  return <DailyCumulativeReturn />;
+  return (
+    <div>
+      <DailyCumulativeReturn />
+      <Mdd />
+    </div>
+  );
 };
 
 const HomeStyle = styled.div`

@@ -2,14 +2,14 @@ import styled from "styled-components";
 import Title from "../common/Title";
 import DailyCumulativeReturnChart from "./DailyCumulativeReturnChart";
 import theme from "@/style/theme";
-const DailyCumulativeReturn = () => {
-  const DailyCumulativeReturnChartData = [
-    { date: "2020-01-01", return: 0 },
-    { date: "2020-06-01", return: 5.12 },
-    { date: "2021-01-01", return: 7.34 },
-    { date: "2021-06-01", return: 10.45 },
-    { date: "2022-01-01", return: 12.89 },
-    { date: "2022-06-01", return: 15.23 }
+const Mdd = () => {
+  const MddData = [
+    { date: "2020-01-01", mdd: 10 },
+    { date: "2020-06-01", mdd: -2.45 },
+    { date: "2021-01-01", mdd: -3.67 },
+    { date: "2021-06-01", mdd: -2.89 },
+    { date: "2022-01-01", mdd: -1.45 },
+    { date: "2023-01-01", mdd: -1.23 }
   ];
 
   const US500 = [
@@ -21,12 +21,8 @@ const DailyCumulativeReturn = () => {
     { date: "2022-06-01", return: 12.23 }
   ];
 
-  const xDailyCumulativeReturn = DailyCumulativeReturnChartData.map(
-    (chartData) => chartData.date
-  );
-  const yDailyCumulativeReturn = DailyCumulativeReturnChartData.map(
-    (chartData) => chartData.return
-  );
+  const xDailyCumulativeReturn = MddData.map((chartData) => chartData.date);
+  const yDailyCumulativeReturn = MddData.map((chartData) => chartData.mdd);
 
   const yUS500 = US500.map((chartData) => chartData.return);
   const data = {
@@ -71,7 +67,7 @@ const DailyCumulativeReturn = () => {
     <DailyCumulativeReturnContainer>
       <DailyCumulativeReturnBox>
         <Title size="T6" color="gray10">
-          누적 수익률
+          MDD(최대손실)
         </Title>
         <ChartContainer>
           <DailyCumulativeReturnChart data={data} />
@@ -100,4 +96,4 @@ const ChartContainer = styled.div`
   height: 360px;
 `;
 
-export default DailyCumulativeReturn;
+export default Mdd;
