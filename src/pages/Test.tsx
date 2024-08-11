@@ -6,6 +6,7 @@ import BasicSetup from "@/components/backtesting/BasicSetup";
 import NavBar from "@/components/common/navbar/NavBar";
 import MyPageModal from "@/components/modal/MyPageModal";
 import styled from "styled-components";
+import BackTestingResult from "./BackTestingResult";
 export const SNB_ITEM = [
   {
     icon: <SnbBackTestingSVG />,
@@ -22,6 +23,7 @@ const Test = () => {
       <NavBar />
       <Page>
         <BasicSetup />
+        <BackTestingResult />
         <MyPageModal></MyPageModal>
       </Page>
     </TestStyle>
