@@ -1,15 +1,16 @@
 import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./api/queryClient";
 import { Provider } from "react-redux";
-import store from "./store";
-import Test from "./pages/Test";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { queryClient } from "./api/queryClient";
 import BackTesting from "./pages/BackTesting";
-import MockInvestment from "./pages/MockInvestment";
+import Callback from "./pages/Callback";
 import Market from "./pages/Market";
+import MockInvestment from "./pages/MockInvestment";
 import MyDashboard from "./pages/MyDashboard";
+import Test from "./pages/Test";
+import store from "./store";
 
 const routeList = [
   {
@@ -35,6 +36,19 @@ const routeList = [
   {
     path: "/my-dashboard",
     element: <MyDashboard />
+  },
+  // todo: 중첩 라우터로 분리
+  {
+    path: "/oauth2/callback/kakao",
+    element: <Callback />
+  },
+  {
+    path: "/oauth2/callback/naver",
+    element: <Callback />
+  },
+  {
+    path: "/oauth2/callback/google",
+    element: <Callback />
   }
 ];
 

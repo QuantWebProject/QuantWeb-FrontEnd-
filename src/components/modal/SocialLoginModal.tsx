@@ -1,15 +1,16 @@
-import styled from "styled-components";
-import SocialLoginButton from "../oauth/SocialLoginButton";
-import Title from "../common/Title";
-import XButton from "./XButton";
-import { ToauthType } from "@/models/member";
 import { requestLoginCode } from "@/api/member";
+import { ToauthType } from "@/models/member";
+import styled from "styled-components";
+import Title from "../common/Title";
+import SocialLoginButton from "../oauth/SocialLoginButton";
+import XButton from "./XButton";
 
 const SocialLoginModal = () => {
   const handleLoginCode = (type: ToauthType) => {
-    requestLoginCode({ type, pathUrl: window.location.pathname })
-      .then(() => {
-        console.log(`⭕ | 성공!`);
+    requestLoginCode(type)
+      .then((res) => {
+        console.log(`⭕ | request login code 성공!`);
+        window.location.href = res.data.oauthLink;
       })
       .catch((err) => {
         console.log(`❌ ${err}`);

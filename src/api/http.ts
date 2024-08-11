@@ -1,7 +1,8 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
+// todo: env 파일로 분리
 const BASE_URL =
-  "http://ec2-43-203-37-134.ap-northeast-2.compute.amazonaws.com:8080";
+  "http://ec2-43-203-223-126.ap-northeast-2.compute.amazonaws.com:8080";
 const TIME_OUT = 10000;
 
 export const http = axios.create({

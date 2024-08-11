@@ -1,23 +1,24 @@
+import { memberAPI } from "@/constants/apiPath";
+import { ToauthType } from "@/models/member";
 import qs from "qs";
 import { http } from "./http";
-import { ILogin, IRequestLoginCode } from "@/models/member";
-import { memberAPI } from "@/constants/apiPath";
 
+// todo: env 파일로 분리
 const BASE_URL = "http://localhost:5173";
 
-export const requestLoginCode = (obj: IRequestLoginCode) => {
-  const REDIRECT_URL = `${BASE_URL}${obj.pathUrl}`;
+export const requestLoginCode = (type: ToauthType) => {
+  const REDIRECT_URL = `${BASE_URL}/oauth2/callback/${type}`;
 
   return http.get(
-    `${memberAPI.requestLoginCode}?${qs.stringify({ redirectUrl: REDIRECT_URL, type: obj.type })}`
+    `${memberAPI.requestLoginCode}?${qs.stringify({ redirectUrl: REDIRECT_URL, type })}`
   );
 };
 
-export const login = (obj: ILogin) => {
-  const REDIRECT_URL = `${BASE_URL}${obj.pathUrl}`;
+export const login = (code: string, pathUrl: string, type: ToauthType) => {
+  const REDIRECT_URL = `${BASE_URL}${pathUrl}`;
 
-  return http.post(
-    `${memberAPI.login}?${qs.stringify({ code: obj.code, redirectUrl: REDIRECT_URL, type: obj.type })}`
+  return http.get(
+    `${memberAPI.login}?${qs.stringify({ code, redirectUrl: REDIRECT_URL, type })}`
   );
 };
 
