@@ -11,7 +11,7 @@ import { Line } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
-//TODO: 타입으로 수정 혹은 제거
+//TODO: data 타입으로 수정 혹은 제거
 const data = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
   datasets: [
