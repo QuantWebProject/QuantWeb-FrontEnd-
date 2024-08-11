@@ -1,5 +1,7 @@
 import { login } from "@/api/member";
+import { useTypedDispatch } from "@/hooks/redux";
 import { ToauthType } from "@/models/member";
+import { setLogin } from "@/store/slices/authSlice";
 import { useEffect } from "react";
 import styled from "styled-components";
 
@@ -9,13 +11,18 @@ const Callback = () => {
   const splitUrl = pathUrl.split("/");
   const type = splitUrl[splitUrl.length - 1]; // type 추출
 
+  const dispatch = useTypedDispatch();
+
   useEffect(() => {
     if (code) {
       login(code, pathUrl, type as ToauthType)
-        .then(() => console.log(`⭕ | login 성공!`))
+        .then(() => {
+          console.log(`⭕ | login 성공!`);
+          dispatch(setLogin());
+        })
         .catch((err) => console.log(`❌ ${err}`));
     }
-  }, [code, pathUrl, type]);
+  }, [code, pathUrl, type, dispatch]);
 
   return (
     <CallbackStyle>

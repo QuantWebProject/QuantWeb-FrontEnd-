@@ -1,11 +1,13 @@
-import styled from "styled-components";
 import QuantLogoSVG from "@/assets/images/QuantLogo.svg?react";
-import LoginButton from "../LoginButton";
-import SnbItem from "./SnbItem";
+import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
-import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
+import { useTypedDispatch, useTypedSelector } from "@/hooks/redux";
+import { setLogout } from "@/store/slices/authSlice";
+import styled from "styled-components";
+import LoginButton from "../LoginButton";
+import SnbItem from "./SnbItem";
 
 const SNB_ITEM = [
   {
@@ -19,6 +21,18 @@ const SNB_ITEM = [
 ];
 
 const NavBar = () => {
+  const { isLoggedIn } = useTypedSelector((state) => state.auth);
+  const dispatch = useTypedDispatch();
+
+  const handleLog = (type: "login" | "logout") => {
+    const handlers = {
+      login: () => {},
+      logout: () => {
+        dispatch(setLogout());
+      }
+    };
+    handlers[type]();
+  };
   return (
     <NavBarStyle>
       <SnbItemWithTitleAndLoginButtonStyle>
@@ -37,7 +51,9 @@ const NavBar = () => {
             ))}
           </SnbItemStyle>
         </SnbItemWithTitleStyle>
-        <LoginButton>로그인</LoginButton>
+        <LoginButton onClick={() => handleLog(isLoggedIn ? "logout" : "login")}>
+          {isLoggedIn ? "로그아웃" : "로그인"}
+        </LoginButton>
       </SnbItemWithTitleAndLoginButtonStyle>
     </NavBarStyle>
   );
