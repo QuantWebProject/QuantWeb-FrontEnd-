@@ -1,14 +1,4 @@
-import {
-  isAuthorityError,
-  isBadRequestError,
-  isConflictError,
-  isNetworkError,
-  isNotFoundError,
-  isServerError,
-  isTimeoutError,
-  isTokenError
-} from "@/utils/error";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { refresh } from "./member";
 
 // todo: env 파일로 분리
@@ -21,6 +11,7 @@ const SERVER_BASE_URL =
 const BASE_URL = IS_DEV_MODE ? "/api" : `${SERVER_BASE_URL}/api`;
 const TIME_OUT = 10000;
 
+let isAlreadyAlerted = false; // 전역 플래그 변수, 중복으로 401 처리하는 것 방지
 export const http = axios.create({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
@@ -32,38 +23,29 @@ const onResponse = (res: AxiosResponse) => {
 };
 
 // todo: 알람을 에러 바운더리 혹은 모달로 대체하고, 메세지 상수 파일로 분리
-const onError = (error: AxiosError | Error) => {
-  if (error instanceof AxiosError) {
-    if (isNetworkError(error)) {
-      window.alert(`❌ Network Error`);
-    } else if (isTimeoutError(error)) {
-      window.alert("❌ Timeout Error");
-    } else if (isServerError(error)) {
-      window.alert("❌ Server Error");
-    } else if (isBadRequestError(error)) {
-      window.alert(`❌ InValid Request Error`);
-    } else if (isTokenError(error)) {
-      window.alert(`❌ InValid Token Error`);
-      // 엑세스 토큰 재발급
-      refresh()
-        .then(() => {
-          window.location.reload();
-        })
-        .catch(() => {
-          window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
-        });
-    } else if (isAuthorityError(error)) {
-      window.alert(`❌ Authority Error`);
-    } else if (isNotFoundError(error)) {
-      window.alert(`❌ NotFound Error`);
-    } else if (isConflictError(error)) {
-      window.alert(`❌ Conflict Error`);
-    } else {
-      const status = error.response?.status;
-      window.alert(`❌ ${status ? status + " Error" : "Unknown Error"}`);
-    }
+const onError = (error: AxiosError) => {
+  const status = error.response?.status;
+  const originalConfig = error.config;
+
+  if (!error.response) {
+    window.alert(`❌ Network Error`);
+  } else if (error.response.status >= 500) {
+    window.alert("❌ Server Error");
+  } else if (error.response.status === 401 && !isAlreadyAlerted) {
+    window.alert(`❌ InValid Token Error`);
+    // 엑세스 토큰 재발급
+    refresh()
+      .then(() => {
+        isAlreadyAlerted = true;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return http(originalConfig as AxiosRequestConfig<any>);
+      })
+      .catch(() => {
+        // todo: 로그인 상태 변경
+        window.alert("토큰이 만료되어 자동으로 로그아웃 되었습니다.");
+      });
   } else {
-    window.alert(`👩‍🔧 ${error.message}`);
+    window.alert(`❌ ${status ? status + " Error" : "Unknown Error"}`);
   }
 
   return Promise.reject(error);

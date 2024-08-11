@@ -19,7 +19,7 @@ const Callback = () => {
     if (code) {
       login(code, pathUrl, type as ToauthType)
         .then(() => {
-          console.log(`⭕ login 성공!`);
+          window.alert(`⭕ login 성공!`);
           dispatch(setLogin());
           navigate("/"); // todo: 이전 페이지로 이동 (주의: navigate(-1)을 사용하면 이전 페이지로 돌아가면서 상태가 초기화될 수 있음)
         })

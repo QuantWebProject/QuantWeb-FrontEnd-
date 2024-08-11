@@ -35,7 +35,7 @@ const NavBar = () => {
     http
       .post(MEMBER_API.logout)
       .then(() => {
-        console.log(`⭕ logout 성공!`);
+        window.alert(`⭕ logout 성공!`);
         dispatch(setLogout());
       })
       .catch((err) => console.log(`❌ ${err}`));
@@ -96,6 +96,7 @@ const NavBarStyle = styled.div`
   gap: 448px;
   flex-shrink: 0;
   background: #7467ff;
+  z-index: 1000;
 `;
 const SnbItemWithTitleAndLoginButtonStyle = styled.div`
   display: flex;
