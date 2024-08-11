@@ -1,19 +1,20 @@
-import styled from "styled-components";
-import { useState } from "react";
-import Body from "./Body";
 import LoginImage from "@/assets/images/Login.svg?react";
+import { ButtonHTMLAttributes, useState } from "react";
+import styled from "styled-components";
+import Body from "./Body";
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
 }
 
-const LoginButton = ({ children }: Props) => {
+const LoginButton = ({ children, ...props }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <LoginButtonStyleStyle
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      {...props}
     >
       {isHovered && (
         <div className="icon">
