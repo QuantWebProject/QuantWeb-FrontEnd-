@@ -59,6 +59,6 @@ const FactorSetupStyle = styled.div`
 const Choice = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: 448px;
+  max-height: 360px;
 `;
 export default FactorSetup;
