@@ -14,6 +14,7 @@ const SetupTitle = ({ title, info }: Props) => {
 };
 
 const SetupTitleStyle = styled.div`
+  flex-shrink: 0;
   height: 4.5rem;
   color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.sub5};

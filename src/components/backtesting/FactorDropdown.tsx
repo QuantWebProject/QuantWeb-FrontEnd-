@@ -64,7 +64,7 @@ const FactorDropdown = ({
 };
 
 const FactorDropdownStyle = styled.div<{ $open: boolean }>`
-  background: #fff;
+  background: #fbfaff;
   cursor: pointer;
 
   .select-box {

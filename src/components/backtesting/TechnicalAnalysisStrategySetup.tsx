@@ -44,7 +44,8 @@ const TechnicalAnalysisStrategySetup = () => {
 const TechnicalAnalysisStrategySetupStyle = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex-grow: 1;
+  overflow-y: hidden;
 
   border-radius: 1.125rem;
   border: 1px solid ${({ theme }) => theme.color.gray3};
