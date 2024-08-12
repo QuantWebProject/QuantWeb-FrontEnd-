@@ -20,12 +20,12 @@ const BackTestingStyle = styled.div`
   padding: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  min-height: calc(100vh - 124px);
+  height: calc(100vh - 124px);
   background-color: ${({ theme }) => theme.color.gray1};
+  overflow-y: hidden;
 
   .setting {
     border-radius: 18px;
-    background-color: white;
   }
 
   .left-setting {
@@ -37,6 +37,7 @@ const BackTestingStyle = styled.div`
 
   .right-setting {
     flex: 1.8;
+    background-color: white;
   }
 `;
 export default BackTesting;

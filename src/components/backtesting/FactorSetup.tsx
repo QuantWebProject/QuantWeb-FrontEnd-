@@ -1,7 +1,7 @@
+import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
+import { useState } from "react";
 import styled from "styled-components";
 import SetupTitle from "../common/SetupTitle";
-import { useState } from "react";
-import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
 import FactorDropdown from "./FactorDropdown";
 
 const FactorSetup = () => {
@@ -22,21 +22,23 @@ const FactorSetup = () => {
   return (
     <FactorSetupStyle>
       <SetupTitle title="팩터 설정" info="*복수선택 가능" />
-      <FactorDropdown
-        title="가치"
-        titleInfo="가치란?"
-        options={FACTOR_STRATEGY_LIST.value}
-        optionsActive={optionsActive}
-        onCheck={handleOptionsActive}
-        open
-      />
-      <FactorDropdown
-        title="수익성"
-        titleInfo="수익성이란?"
-        options={FACTOR_STRATEGY_LIST.profit}
-        optionsActive={optionsActive}
-        onCheck={handleOptionsActive}
-      />
+      <Choice>
+        <FactorDropdown
+          title="가치"
+          titleInfo="가치란?"
+          options={FACTOR_STRATEGY_LIST.value}
+          optionsActive={optionsActive}
+          onCheck={handleOptionsActive}
+          open
+        />
+        <FactorDropdown
+          title="수익성"
+          titleInfo="수익성이란?"
+          options={FACTOR_STRATEGY_LIST.profit}
+          optionsActive={optionsActive}
+          onCheck={handleOptionsActive}
+        />
+      </Choice>
       <div className="empty-bottom"></div>
     </FactorSetupStyle>
   );
@@ -54,4 +56,9 @@ const FactorSetupStyle = styled.div`
   }
 `;
 
+const Choice = styled.div`
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 448px;
+`;
 export default FactorSetup;

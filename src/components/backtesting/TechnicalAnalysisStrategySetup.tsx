@@ -1,9 +1,8 @@
+import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
+import { useState } from "react";
 import styled from "styled-components";
 import SetupTitle from "../common/SetupTitle";
-import { useState } from "react";
-import { FACTOR_STRATEGY_LIST } from "@/constants/backtest";
 import FactorItem from "./FactorItem";
-import { OptionContainer } from "./FactorDropdown";
 
 const TechnicalAnalysisStrategySetup = () => {
   const [optionsActive, setOptionsActive] = useState<number[]>([]);
@@ -43,6 +42,10 @@ const TechnicalAnalysisStrategySetup = () => {
 };
 
 const TechnicalAnalysisStrategySetupStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
   border-radius: 1.125rem;
   border: 1px solid ${({ theme }) => theme.color.gray3};
   background-color: #fff;
@@ -54,6 +57,16 @@ const TechnicalAnalysisStrategySetupStyle = styled.div`
   .empty-bottom {
     height: 16px;
     border-radius: 0 0 1.125rem 1.125rem;
+  }
+`;
+
+const OptionContainer = styled.div`
+  overflow-y: auto;
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 `;
 export default TechnicalAnalysisStrategySetup;

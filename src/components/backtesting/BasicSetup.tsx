@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import SetupTitle from "../common/SetupTitle";
 import Input from "@/components/common/Input";
-import InputWithDropdown from "@/components/common/InputWithDropdown";
 import InputWithCalendar from "@/components/common/InputWithCalendar";
+import InputWithDropdown from "@/components/common/InputWithDropdown";
+import styled from "styled-components";
+import MyStrategyButton from "../common/MyStrategyButton";
+import SetupTitle from "../common/SetupTitle";
 
 const REBALANCING_OPTIONS = [
   { value: 0, name: "1년마다 한번" },
@@ -44,20 +45,26 @@ const BasicSetup = () => {
           <LabelStyle>수수료</LabelStyle>
           <Input type="number" unit="%" defaultValue="0.02" />
         </InputWithLabel>
+        <MyStrategyButton schema="myStrategy" />
       </BasicSetupForm>
     </BasicSetupStyle>
   );
 };
 
-const BasicSetupStyle = styled.div``;
+const BasicSetupStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
 const BasicSetupForm = styled.form`
+  flex: 1;
+  border-radius: 0 0 1.25rem 1.25rem;
   background-color: #ffffff;
-  height: 720px;
-  width: 388px;
   display: flex;
   flex-wrap: wrap;
   gap: 24px 0;
   padding: 24px 32px;
+  overflow-y: auto;
 `;
 
 const InputWithLabel = styled.div`
