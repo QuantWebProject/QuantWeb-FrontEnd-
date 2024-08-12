@@ -1,6 +1,5 @@
 import BasicSetup from "@/components/backtesting/BasicSetup";
-import FactorSetup from "@/components/backtesting/FactorSetup";
-import TechnicalAnalysisStrategySetup from "@/components/backtesting/TechnicalAnalysisStrategySetup";
+import MiddleSetup from "@/components/backtesting/MiddleSetup";
 import styled from "styled-components";
 
 const BackTesting = () => {
@@ -10,12 +9,7 @@ const BackTesting = () => {
         <BasicSetup />
       </div>
       <div className="setting middle-setting">
-        <div className="factor-setup">
-          <FactorSetup />
-        </div>
-        <div className="technical-setup">
-          <TechnicalAnalysisStrategySetup />
-        </div>
+        <MiddleSetup />
       </div>
       <div className="setting right-setting"></div>
     </BackTestingStyle>
@@ -26,26 +20,23 @@ const BackTestingStyle = styled.div`
   padding: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  min-height: calc(100vh - 124px);
+  height: calc(100vh - 124px);
   background-color: ${({ theme }) => theme.color.gray1};
+  overflow-y: hidden;
 
   .setting {
     border-radius: 18px;
   }
 
   .left-setting {
-    width: 388px;
-    background-color: white;
+    flex: 1;
   }
   .middle-setting {
-    width: 388px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex: 1;
   }
 
   .right-setting {
-    width: 704px;
+    flex: 1.8;
     background-color: white;
   }
 `;

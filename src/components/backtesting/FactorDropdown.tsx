@@ -1,8 +1,8 @@
-import styled from "styled-components";
 import ArrowDownSVG from "@/assets/images/arrowDown.svg?react";
 import { useState } from "react";
-import FactorItem from "./FactorItem";
+import styled from "styled-components";
 import ToolTip from "../common/ToolTip";
+import FactorItem from "./FactorItem";
 
 interface Option {
   id: number;
@@ -64,8 +64,9 @@ const FactorDropdown = ({
 };
 
 const FactorDropdownStyle = styled.div<{ $open: boolean }>`
-  background: #fff;
+  background: #fbfaff;
   cursor: pointer;
+
   .select-box {
     display: flex;
     justify-content: space-between;
