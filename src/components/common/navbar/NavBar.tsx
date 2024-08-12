@@ -21,8 +21,8 @@ const SNB_ITEM = [
     path: "/backtesting"
   },
   { icon: <SnbMockInvestSVG />, name: "모의투자", path: "/test" },
-  { icon: <SnbMarketSVG />, name: "마켓", path: "/" },
-  { icon: <SnbDashBoardSVG />, name: "MY 대시보드", path: "/" }
+  { icon: <SnbMarketSVG />, name: "마켓", path: "/market" },
+  { icon: <SnbDashBoardSVG />, name: "MY 대시보드", path: "/my-dashboard" }
 ];
 
 const NavBar = () => {
