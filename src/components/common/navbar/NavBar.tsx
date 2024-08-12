@@ -1,11 +1,18 @@
-import styled from "styled-components";
+import { http } from "@/api/http";
 import QuantLogoSVG from "@/assets/images/QuantLogo.svg?react";
-import LoginButton from "../LoginButton";
-import SnbItem from "./SnbItem";
+import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
-import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
+import Modal from "@/components/modal/Modal";
+import SocialLoginModal from "@/components/modal/SocialLoginModal";
+import { MEMBER_API } from "@/constants/apiPath";
+import { useTypedDispatch, useTypedSelector } from "@/hooks/redux";
+import useModal from "@/hooks/useModal";
+import { setLogout } from "@/store/slices/authSlice";
+import styled from "styled-components";
+import LoginButton from "../LoginButton";
+import SnbItem from "./SnbItem";
 
 const SNB_ITEM = [
   {
@@ -19,6 +26,33 @@ const SNB_ITEM = [
 ];
 
 const NavBar = () => {
+  const { isLoggedIn } = useTypedSelector((state) => state.auth);
+  const dispatch = useTypedDispatch();
+
+  const { isOpen, modalOpen, modalClose } = useModal(false);
+
+  const logout = () => {
+    http
+      .post(MEMBER_API.logout)
+      .then(() => {
+        window.alert(`⭕ logout 성공!`);
+        dispatch(setLogout());
+      })
+      .catch((err) => console.log(`❌ ${err}`));
+  };
+
+  const handleLog = (type: "login" | "logout") => {
+    const handlers = {
+      login: () => {
+        modalOpen();
+      },
+      logout: () => {
+        logout();
+      }
+    };
+    handlers[type]();
+  };
+
   return (
     <NavBarStyle>
       <SnbItemWithTitleAndLoginButtonStyle>
@@ -37,8 +71,15 @@ const NavBar = () => {
             ))}
           </SnbItemStyle>
         </SnbItemWithTitleStyle>
-        <LoginButton>로그인</LoginButton>
+        <LoginButton onClick={() => handleLog(isLoggedIn ? "logout" : "login")}>
+          {isLoggedIn ? "로그아웃" : "로그인"}
+        </LoginButton>
       </SnbItemWithTitleAndLoginButtonStyle>
+      {isOpen && (
+        <Modal onClose={modalClose}>
+          <SocialLoginModal onClose={modalClose} />
+        </Modal>
+      )}
     </NavBarStyle>
   );
 };
@@ -55,6 +96,7 @@ const NavBarStyle = styled.div`
   gap: 448px;
   flex-shrink: 0;
   background: #7467ff;
+  z-index: 1000;
 `;
 const SnbItemWithTitleAndLoginButtonStyle = styled.div`
   display: flex;

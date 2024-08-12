@@ -1,16 +1,33 @@
+import { requestLoginCode } from "@/api/member";
+import { ToauthType } from "@/models/member";
 import styled from "styled-components";
-import SocialLoginButton from "../oauth/SocialLoginButton";
 import Title from "../common/Title";
+import SocialLoginButton from "../oauth/SocialLoginButton";
 import XButton from "./XButton";
 
-const SocialLoginModal = () => {
+interface Props {
+  onClose: () => void;
+}
+
+const SocialLoginModal = ({ onClose }: Props) => {
+  const handleLoginCode = (type: ToauthType) => {
+    requestLoginCode(type)
+      .then((res) => {
+        console.log(`⭕ request login code 성공!`);
+        window.location.href = res.data.oauthLink;
+      })
+      .catch((err) => {
+        console.log(`❌ ${err}`);
+      });
+  };
+
   return (
     <SocialLoginModalStyle>
       <div className="modal-header">
         <Title size="T2" color="gray10">
           로그인 또는 회원가입
         </Title>
-        <XButton onClose={() => {}} />
+        <XButton onClose={onClose} />
       </div>
       <div className="modal-body">
         <div className="notice">
@@ -19,10 +36,18 @@ const SocialLoginModal = () => {
           </Title>
         </div>
         <div className="social-buttons">
-          <SocialLoginButton schema="google" />
-          <SocialLoginButton schema="kakao" />
-
-          <SocialLoginButton schema="naver" />
+          <SocialLoginButton
+            schema="google"
+            onClick={() => handleLoginCode("google")}
+          />
+          <SocialLoginButton
+            schema="kakao"
+            onClick={() => handleLoginCode("kakao")}
+          />
+          <SocialLoginButton
+            schema="naver"
+            onClick={() => handleLoginCode("naver")}
+          />
         </div>
       </div>
     </SocialLoginModalStyle>
@@ -35,6 +60,7 @@ const SocialLoginModalStyle = styled.div`
   background-color: white;
   border-radius: 18px;
   position: relative;
+  z-index: 1000;
   .modal-header {
     height: 84px;
     display: flex;

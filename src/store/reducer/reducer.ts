@@ -1,7 +1,7 @@
-import modalSlice from "../slices/modalSlice";
+import authSlice from "../slices/authSlice";
 
 const reducer = {
-  modal: modalSlice,
+  auth: authSlice
 };
 
 export default reducer;

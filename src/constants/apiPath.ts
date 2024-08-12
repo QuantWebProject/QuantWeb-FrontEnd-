@@ -1,7 +1,7 @@
-export const memberAPI = {
-  requestLoginCode: "/api/auth/oauth2/login",
-  login: "/api/auth/oauth2/login",
-  refresh: "/api/auth/oauth2/token/refresh",
-  logout: "/api/auth/oauth2/logout",
-  userInfo: "/api/users/info"
+export const MEMBER_API = {
+  requestLoginCode: "/auth/oauth2/login",
+  login: "/auth/oauth2/login",
+  refresh: "/auth/oauth2/token/refresh",
+  logout: "/auth/oauth2/logout",
+  userInfo: "/users/info"
 };

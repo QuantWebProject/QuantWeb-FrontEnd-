@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
-import SnbBackTestingSVG from "@/assets/images/SnbBackTesting.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
-import NavBar from "@/components/common/navbar/NavBar";
 import BasicSetup from "@/components/backtesting/BasicSetup";
-import SocialLoginModal from "@/components/modal/SocialLoginModal";
+import NavBar from "@/components/common/navbar/NavBar";
 import MyPageModal from "@/components/modal/MyPageModal";
+import styled from "styled-components";
 import BackTestingResult from "./BackTestingResult";
 export const SNB_ITEM = [
   {
@@ -23,8 +22,8 @@ const Test = () => {
     <TestStyle>
       <NavBar />
       <Page>
+        <BasicSetup />
         <BackTestingResult />
-        <SocialLoginModal></SocialLoginModal>
         <MyPageModal></MyPageModal>
       </Page>
     </TestStyle>
