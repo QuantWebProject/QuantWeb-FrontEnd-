@@ -1,14 +1,21 @@
+import NextButton from "@/assets/images/NextButton.svg?react";
 import styled from "styled-components";
 import Body from "../common/Body";
-import NextButton from "@/assets/images/NextButton.svg?react";
 interface Props {
   text: string;
   icon?: React.ReactNode;
   buttonText: string;
   isConnected: boolean;
+  onClick?: () => void;
 }
 
-const MyPageItem = ({ text, icon, buttonText, isConnected }: Props) => {
+const MyPageItem = ({
+  text,
+  icon,
+  buttonText,
+  isConnected,
+  onClick
+}: Props) => {
   return (
     <MyPageItemStyle>
       <div className="icon"> {icon}</div>
@@ -16,15 +23,17 @@ const MyPageItem = ({ text, icon, buttonText, isConnected }: Props) => {
         <Body size="B1"> {text}</Body>
       </div>
 
-      {isConnected ? (
-        <Body size="B1" color="#7467FF">
-          {buttonText}
-        </Body>
-      ) : (
-        <div className="icon">
-          <NextButton />
-        </div>
-      )}
+      <button onClick={onClick}>
+        {isConnected ? (
+          <Body size="B1" color="#7467FF">
+            {buttonText}
+          </Body>
+        ) : (
+          <div className="icon">
+            <NextButton />
+          </div>
+        )}
+      </button>
     </MyPageItemStyle>
   );
 };

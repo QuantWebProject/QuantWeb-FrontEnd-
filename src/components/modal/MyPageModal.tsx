@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Title from "../common/Title";
 import Modal from "./Modal";
 import MyPageItem from "./MyPageItem";
+import NicknameModal from "./NicknameModal";
 import UserDelete from "./UserDelete";
 import XButton from "./XButton";
 
@@ -18,6 +19,12 @@ const MyPageModal = ({ onClose }: Props) => {
     isOpen: isDeleteOpen,
     modalOpen: deleteModalOpen,
     modalClose: deleteModalClose
+  } = useModal(false);
+
+  const {
+    isOpen: isNicknameOpen,
+    modalOpen: nicknameModalOpen,
+    modalClose: nicknameModalClose
   } = useModal(false);
 
   return (
@@ -35,6 +42,7 @@ const MyPageModal = ({ onClose }: Props) => {
             text="갈라파고스물개"
             buttonText="변경"
             isConnected={true}
+            onClick={nicknameModalOpen}
           ></MyPageItem>
         </div>
         <div className="modal-item">
@@ -72,6 +80,11 @@ const MyPageModal = ({ onClose }: Props) => {
         {isDeleteOpen && (
           <Modal onClose={deleteModalClose}>
             <UserDelete onClose={deleteModalClose} />
+          </Modal>
+        )}
+        {isNicknameOpen && (
+          <Modal onClose={nicknameModalClose}>
+            <NicknameModal onClose={nicknameModalClose} />
           </Modal>
         )}
       </div>
