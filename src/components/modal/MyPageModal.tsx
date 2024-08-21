@@ -1,18 +1,23 @@
-import styled from "styled-components";
-import Title from "../common/Title";
+import GooGleSVG from "@/assets/images/googleIcon.svg?react";
 import KakaoSVG from "@/assets/images/socialLogin/kakaoLogin.svg?react";
 import NaverSVG from "@/assets/images/socialLogin/naverLogin.svg?react";
-import GooGleSVG from "@/assets/images/googleIcon.svg?react";
+import styled from "styled-components";
+import Title from "../common/Title";
 import MyPageItem from "./MyPageItem";
 import XButton from "./XButton";
-const MyPageModal = () => {
+
+interface Props {
+  onClose: () => void;
+}
+
+const MyPageModal = ({ onClose }: Props) => {
   return (
     <MyPageModalStyle>
       <div className="modal-header">
         <Title size="T3" color="gray10">
           내 정보 수정
         </Title>
-        <XButton onClose={() => {}} />
+        <XButton onClose={onClose} />
       </div>
       <div className="modal-body">
         <div className="modal-item">
@@ -52,9 +57,7 @@ const MyPageModal = () => {
             isConnected={false}
           ></MyPageItem>
         </div>
-        <div className="modal-item">
-          <button>회원탈퇴</button>
-        </div>
+        <button className="delete">회원탈퇴</button>
       </div>
     </MyPageModalStyle>
   );
@@ -94,5 +97,12 @@ const MyPageModalStyle = styled.div`
       gap: 16px;
     }
   }
+
+  .delete {
+    margin-left: auto;
+    color: ${({ theme }) => theme.color.gray8};
+    text-decoration: underline;
+  }
 `;
+
 export default MyPageModal;

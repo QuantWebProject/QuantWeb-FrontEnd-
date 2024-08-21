@@ -4,7 +4,6 @@ import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
 import BasicSetup from "@/components/backtesting/BasicSetup";
 import NavBar from "@/components/common/navbar/NavBar";
-import MyPageModal from "@/components/modal/MyPageModal";
 import styled from "styled-components";
 import BackTestingResult from "./BackTestingResult";
 export const SNB_ITEM = [
@@ -24,7 +23,6 @@ const Test = () => {
       <Page>
         <BasicSetup />
         <BackTestingResult />
-        <MyPageModal></MyPageModal>
       </Page>
     </TestStyle>
   );

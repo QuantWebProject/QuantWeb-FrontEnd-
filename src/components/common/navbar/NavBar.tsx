@@ -5,12 +5,14 @@ import SnbDashBoardSVG from "@/assets/images/SnbDashBoard.svg?react";
 import SnbMarketSVG from "@/assets/images/SnbMarket.svg?react";
 import SnbMockInvestSVG from "@/assets/images/SnbMockInvest.svg?react";
 import Modal from "@/components/modal/Modal";
+import MyPageModal from "@/components/modal/MyPageModal";
 import SocialLoginModal from "@/components/modal/SocialLoginModal";
 import { MEMBER_API } from "@/constants/apiPath";
 import { useTypedDispatch, useTypedSelector } from "@/hooks/redux";
 import useModal from "@/hooks/useModal";
 import { setLogout } from "@/store/slices/authSlice";
 import styled from "styled-components";
+import Body from "../Body";
 import LoginButton from "../LoginButton";
 import SnbItem from "./SnbItem";
 
@@ -29,7 +31,17 @@ const NavBar = () => {
   const { isLoggedIn } = useTypedSelector((state) => state.auth);
   const dispatch = useTypedDispatch();
 
-  const { isOpen, modalOpen, modalClose } = useModal(false);
+  const {
+    isOpen: isLoginOpen,
+    modalOpen: loginModalOpen,
+    modalClose: loginModalClose
+  } = useModal(false);
+
+  const {
+    isOpen: isMyOpen,
+    modalOpen: myModalOpen,
+    modalClose: myModalClose
+  } = useModal(false);
 
   const logout = () => {
     http
@@ -44,7 +56,7 @@ const NavBar = () => {
   const handleLog = (type: "login" | "logout") => {
     const handlers = {
       login: () => {
-        modalOpen();
+        loginModalOpen();
       },
       logout: () => {
         logout();
@@ -73,63 +85,80 @@ const NavBar = () => {
             ))}
           </SnbItemStyle>
         </SnbItemWithTitleStyle>
-
-        <LoginButton onClick={() => handleLog(isLoggedIn ? "logout" : "login")}>
-          {isLoggedIn ? "로그아웃" : "로그인"}
-        </LoginButton>
+        <Buttons>
+          <MyInfoButton onClick={myModalOpen}>
+            <Body size="B2" color="white">
+              내 정보 수정
+            </Body>
+          </MyInfoButton>
+          <LoginButton
+            onClick={() => handleLog(isLoggedIn ? "logout" : "login")}
+          >
+            {isLoggedIn ? "로그아웃" : "로그인"}
+          </LoginButton>
+        </Buttons>
       </SnbItemWithTitleAndLoginButtonStyle>
-      {isOpen && (
-        <Modal onClose={modalClose}>
-          <SocialLoginModal onClose={modalClose} />
+      {isLoginOpen && (
+        <Modal onClose={loginModalClose}>
+          <SocialLoginModal onClose={loginModalClose} />
+        </Modal>
+      )}
+      {isMyOpen && (
+        <Modal onClose={myModalClose}>
+          <MyPageModal onClose={myModalClose} />
         </Modal>
       )}
     </NavBarStyle>
   );
 };
 const NavBarStyle = styled.div`
-  display: inline-flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 344px;
-  height: 980px;
+  height: 100vh;
   padding: 48px 32px;
   flex-direction: column;
-  gap: 448px;
   flex-shrink: 0;
   background: #7467ff;
   z-index: 1000;
 `;
 const SnbItemWithTitleAndLoginButtonStyle = styled.div`
   display: flex;
-  height: 884px;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 398px;
   flex-shrink: 0;
-  align-self: stretch;
+  height: 100%;
 `;
 const SnbItemWithTitleStyle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 60px;
   .logo {
     display: flex;
     padding-left: 20px;
     flex-direction: column;
-    align-items: flex-start;
     gap: 10px;
-    align-self: stretch;
   }
+  flex: 1;
 `;
 const SnbItemStyle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
-  align-self: stretch;
+`;
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  button {
+    height: 48px;
+  }
 `;
 
-const MyInfo = styled.button``;
+const MyInfoButton = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+`;
+
 export default NavBar;
