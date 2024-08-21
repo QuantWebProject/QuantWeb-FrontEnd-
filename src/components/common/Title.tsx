@@ -1,15 +1,15 @@
 import { ColorKey, THeadingSize } from "@/style/theme";
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import styled from "styled-components";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   size: THeadingSize;
   color?: ColorKey;
 }
-const Title = ({ children, size, color }: Props) => {
+const Title = ({ children, size, color, ...props }: Props) => {
   return (
-    <TitleStyle size={size} color={color}>
+    <TitleStyle size={size} color={color} {...props}>
       {children}
     </TitleStyle>
   );
