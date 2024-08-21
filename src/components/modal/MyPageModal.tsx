@@ -1,9 +1,12 @@
 import GooGleSVG from "@/assets/images/googleIcon.svg?react";
 import KakaoSVG from "@/assets/images/socialLogin/kakaoLogin.svg?react";
 import NaverSVG from "@/assets/images/socialLogin/naverLogin.svg?react";
+import useModal from "@/hooks/useModal";
 import styled from "styled-components";
 import Title from "../common/Title";
+import Modal from "./Modal";
 import MyPageItem from "./MyPageItem";
+import UserDelete from "./UserDelete";
 import XButton from "./XButton";
 
 interface Props {
@@ -11,6 +14,12 @@ interface Props {
 }
 
 const MyPageModal = ({ onClose }: Props) => {
+  const {
+    isOpen: isDeleteOpen,
+    modalOpen: deleteModalOpen,
+    modalClose: deleteModalClose
+  } = useModal(false);
+
   return (
     <MyPageModalStyle>
       <div className="modal-header">
@@ -57,7 +66,14 @@ const MyPageModal = ({ onClose }: Props) => {
             isConnected={false}
           ></MyPageItem>
         </div>
-        <button className="delete">회원탈퇴</button>
+        <button className="delete" onClick={deleteModalOpen}>
+          회원탈퇴
+        </button>
+        {isDeleteOpen && (
+          <Modal onClose={deleteModalClose}>
+            <UserDelete onClose={deleteModalClose} />
+          </Modal>
+        )}
       </div>
     </MyPageModalStyle>
   );
@@ -69,6 +85,7 @@ const MyPageModalStyle = styled.div`
   background-color: white;
   border-radius: 18px;
   position: relative;
+  z-index: 1000;
 
   .modal-header {
     height: 84px;
