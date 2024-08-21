@@ -28,6 +28,15 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+    button {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: inherit;
+        font-family: inherit;
+        cursor: pointer;
+    }
     
 `;
 

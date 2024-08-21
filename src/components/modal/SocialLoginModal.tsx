@@ -13,7 +13,6 @@ const SocialLoginModal = ({ onClose }: Props) => {
   const handleLoginCode = (type: ToauthType) => {
     requestLoginCode(type)
       .then((res) => {
-        console.log(`⭕ request login code 성공!`);
         window.location.href = res.data.oauthLink;
       })
       .catch((err) => {

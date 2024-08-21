@@ -1,15 +1,16 @@
 import { TBodySize } from "@/style/theme";
+import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   size: TBodySize;
   color?: string;
 }
 
-const Body = ({ children, size, color }: Props) => {
+const Body = ({ children, size, color, ...props }: Props) => {
   return (
-    <BodyStyle size={size} color={color}>
+    <BodyStyle size={size} color={color} {...props}>
       {children}
     </BodyStyle>
   );

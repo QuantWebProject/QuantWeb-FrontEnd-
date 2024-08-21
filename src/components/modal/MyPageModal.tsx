@@ -1,18 +1,39 @@
-import styled from "styled-components";
-import Title from "../common/Title";
+import GooGleSVG from "@/assets/images/googleIcon.svg?react";
 import KakaoSVG from "@/assets/images/socialLogin/kakaoLogin.svg?react";
 import NaverSVG from "@/assets/images/socialLogin/naverLogin.svg?react";
-import GooGleSVG from "@/assets/images/googleIcon.svg?react";
+import useModal from "@/hooks/useModal";
+import styled from "styled-components";
+import Title from "../common/Title";
+import Modal from "./Modal";
 import MyPageItem from "./MyPageItem";
+import NicknameModal from "./NicknameModal";
+import UserDelete from "./UserDelete";
 import XButton from "./XButton";
-const MyPageModal = () => {
+
+interface Props {
+  onClose: () => void;
+}
+
+const MyPageModal = ({ onClose }: Props) => {
+  const {
+    isOpen: isDeleteOpen,
+    modalOpen: deleteModalOpen,
+    modalClose: deleteModalClose
+  } = useModal(false);
+
+  const {
+    isOpen: isNicknameOpen,
+    modalOpen: nicknameModalOpen,
+    modalClose: nicknameModalClose
+  } = useModal(false);
+
   return (
     <MyPageModalStyle>
       <div className="modal-header">
         <Title size="T3" color="gray10">
           내 정보 수정
         </Title>
-        <XButton onClose={() => {}} />
+        <XButton onClose={onClose} />
       </div>
       <div className="modal-body">
         <div className="modal-item">
@@ -21,6 +42,7 @@ const MyPageModal = () => {
             text="갈라파고스물개"
             buttonText="변경"
             isConnected={true}
+            onClick={nicknameModalOpen}
           ></MyPageItem>
         </div>
         <div className="modal-item">
@@ -52,9 +74,19 @@ const MyPageModal = () => {
             isConnected={false}
           ></MyPageItem>
         </div>
-        <div className="modal-item">
-          <button>회원탈퇴</button>
-        </div>
+        <button className="delete" onClick={deleteModalOpen}>
+          회원탈퇴
+        </button>
+        {isDeleteOpen && (
+          <Modal onClose={deleteModalClose}>
+            <UserDelete onClose={deleteModalClose} />
+          </Modal>
+        )}
+        {isNicknameOpen && (
+          <Modal onClose={nicknameModalClose}>
+            <NicknameModal onClose={nicknameModalClose} />
+          </Modal>
+        )}
       </div>
     </MyPageModalStyle>
   );
@@ -66,6 +98,7 @@ const MyPageModalStyle = styled.div`
   background-color: white;
   border-radius: 18px;
   position: relative;
+  z-index: 1000;
 
   .modal-header {
     height: 84px;
@@ -94,5 +127,12 @@ const MyPageModalStyle = styled.div`
       gap: 16px;
     }
   }
+
+  .delete {
+    margin-left: auto;
+    color: ${({ theme }) => theme.color.gray8};
+    text-decoration: underline;
+  }
 `;
+
 export default MyPageModal;
