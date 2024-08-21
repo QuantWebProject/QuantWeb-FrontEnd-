@@ -47,7 +47,6 @@ const NavBar = () => {
     http
       .post(MEMBER_API.logout)
       .then(() => {
-        window.alert(`⭕ logout 성공!`);
         dispatch(setLogout());
       })
       .catch((err) => console.log(`❌ ${err}`));
@@ -86,11 +85,13 @@ const NavBar = () => {
           </SnbItemStyle>
         </SnbItemWithTitleStyle>
         <Buttons>
-          <MyInfoButton onClick={myModalOpen}>
-            <Body size="B2" color="white">
-              내 정보 수정
-            </Body>
-          </MyInfoButton>
+          {isLoggedIn && (
+            <MyInfoButton onClick={myModalOpen}>
+              <Body size="B2" color="white">
+                내 정보 수정
+              </Body>
+            </MyInfoButton>
+          )}
           <LoginButton
             onClick={() => handleLog(isLoggedIn ? "logout" : "login")}
           >
