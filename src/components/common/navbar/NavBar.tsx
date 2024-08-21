@@ -63,7 +63,9 @@ const NavBar = () => {
               <SnbItem
                 key={index}
                 text={item.name}
-                schema="default"
+                schema={
+                  location.pathname === item.path ? "selected" : "default"
+                }
                 icon={item.icon}
                 diasbled={false}
                 path={item.path}
@@ -71,6 +73,7 @@ const NavBar = () => {
             ))}
           </SnbItemStyle>
         </SnbItemWithTitleStyle>
+
         <LoginButton onClick={() => handleLog(isLoggedIn ? "logout" : "login")}>
           {isLoggedIn ? "로그아웃" : "로그인"}
         </LoginButton>
@@ -92,7 +95,6 @@ const NavBarStyle = styled.div`
   height: 980px;
   padding: 48px 32px;
   flex-direction: column;
-  align-items: flex-start;
   gap: 448px;
   flex-shrink: 0;
   background: #7467ff;
@@ -129,4 +131,5 @@ const SnbItemStyle = styled.div`
   align-self: stretch;
 `;
 
+const MyInfo = styled.button``;
 export default NavBar;
