@@ -1,21 +1,45 @@
 import styled from "styled-components";
 import DailyCumulativeReturn from "@/components/backtestingResult/DailyCumulativeReturn";
 import Mdd from "@/components/backtestingResult/Mdd";
+import FinalAsset from "@/components/backtestingResult/FinalAsset";
+import InvestmentSectors from "@/components/backtestingResult/InvestmentSectors";
 const BackTestingResult = () => {
   return (
-    <div>
-      <DailyCumulativeReturn />
-      <Mdd />
-    </div>
+    <Container className="container">
+      <Top>
+        <Left>
+          <DailyCumulativeReturn />
+          <Mdd />
+        </Left>
+
+        <Right>
+          <FinalAsset />
+          <InvestmentSectors />
+        </Right>
+      </Top>
+    </Container>
   );
 };
 
-const HomeStyle = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 10px;
+  padding: 24px;
+`;
 
-  background-color: aliceblue;
+const Top = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+`;
+const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 export default BackTestingResult;

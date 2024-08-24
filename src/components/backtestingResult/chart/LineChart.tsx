@@ -200,7 +200,7 @@ type Props = {
   data: typeof data;
   options?: typeof options;
 };
-const DailyCumulativeReturnChart = (props: Props) => {
+const LineChart = (props: Props) => {
   return (
     <ChartContainer>
       <Line data={props.data} options={options} />
@@ -212,4 +212,4 @@ const ChartContainer = styled.div`
   width: 943px;
   height: 360px;
 `;
-export default DailyCumulativeReturnChart;
+export default LineChart;
