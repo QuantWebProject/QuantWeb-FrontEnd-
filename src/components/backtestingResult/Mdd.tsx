@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Title from "../common/Title";
-import DailyCumulativeReturnChart from "./DailyCumulativeReturnChart";
+import LineChart from "./chart/LineChart";
 import theme from "@/style/theme";
 const Mdd = () => {
   const MddData = [
@@ -70,7 +70,7 @@ const Mdd = () => {
           MDD(최대손실)
         </Title>
         <ChartContainer>
-          <DailyCumulativeReturnChart data={data} />
+          <LineChart data={data} />
         </ChartContainer>
       </DailyCumulativeReturnBox>
     </DailyCumulativeReturnContainer>
