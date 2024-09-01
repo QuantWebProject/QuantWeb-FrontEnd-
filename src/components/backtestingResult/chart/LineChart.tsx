@@ -48,7 +48,7 @@ const options: any = {
   plugins: {
     legend: {
       // https://www.chartjs.org/docs/latest/configuration/legend.html
-      display: true, // legend 표시 여부
+      display: false, // legend 표시 여부
       // position: 'top'|'left'|'bottom'|'right', // 범례의 위치
       // align: 'start' | 'center' | 'end', // 범례의 정렬
       labels: {
